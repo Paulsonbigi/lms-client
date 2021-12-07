@@ -58,7 +58,7 @@ export default {
   ],
 
   axios: {
-    baseURL: "https://young-beyond-66630.herokuapp.com/"  // here set your API url
+    baseURL: "https://lms-servers.herokuapp.com/"  // here set your API url
   },
 
 
@@ -114,6 +114,10 @@ export default {
         }
       }
     }
+  },
+
+  generate: {
+    fallback: true
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
