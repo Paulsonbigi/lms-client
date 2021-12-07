@@ -58,7 +58,7 @@ export default {
   ],
 
   axios: {
-    baseURL: "http://localhost:8040/"  // here set your API url
+    baseURL: "https://young-beyond-66630.herokuapp.com/"  // here set your API url
   },
 
 
