@@ -29,7 +29,6 @@
 <script>
 import { mapActions, mapGetters } from "vuex"
 export default {
-    layout: 'admin',
     middleware: ['auth', 'isAdmin'],
     components: {},
     data(){

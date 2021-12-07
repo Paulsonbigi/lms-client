@@ -111,7 +111,6 @@
 <script>
 import { mapGetters, mapActions, mapMutations } from "vuex"
 export default {
-    layout: 'admin',
     middleware: ['auth', 'isAdmin'],
   components: {},
   data(){

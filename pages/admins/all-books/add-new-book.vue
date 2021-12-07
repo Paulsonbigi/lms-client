@@ -145,7 +145,6 @@
 <script>
 import { mapActions } from "vuex"
 export default {
-    layout: 'admin',
     middleware: ['auth', 'isAdmin'],
     data(){
         return {

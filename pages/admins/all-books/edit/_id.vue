@@ -128,8 +128,7 @@
 <script>
 import { mapGetters, mapActions, mapMutations } from "vuex"
 export default {
-    layout: 'admin',
-    middleware: ['auth', 'isAdmin'],
+    middleware: [ 'auth', 'isAdmin' ],
     data(){
         return {
             bookId: null,
