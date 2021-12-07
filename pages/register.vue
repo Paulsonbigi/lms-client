@@ -76,6 +76,9 @@
                                     <v-text-field
                                     v-model="register.confirmPassword"
                                     placeholder="Re-enter Password"
+                                    :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+                                    :type="show1 ? 'text' : 'password'"
+                                    @click:append="show1 = !show1"
                                     label="Re-enter Password"
                                     dense
                                     outlined
