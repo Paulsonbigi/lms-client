@@ -57,28 +57,26 @@
                                     />
                                 </div>
                                 <div>
-                                    <v-text-field
+                                
+                                <v-text-field
                                     v-model="register.password"
                                     placeholder="Password"
                                     :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
                                     :type="show1 ? 'text' : 'password'"
+                                    @click:append="show1 = !show1"
                                     label="Password"
                                     dense
                                     outlined
                                     block
-                                    type="password"
                                     :required="true"
-                                    class="ma-0 p-0 "
-                                    @click:append="show1 = !show1"
+                                    class="ma-0 p-0 mb-3"
                                     />
                                 </div>
                                 <div>
                                     <v-text-field
                                     v-model="register.confirmPassword"
                                     placeholder="Re-enter Password"
-                                    :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
-                                    :type="show1 ? 'text' : 'password'"
-                                    @click:append="show1 = !show1"
+                                    type="password"
                                     label="Re-enter Password"
                                     dense
                                     outlined
