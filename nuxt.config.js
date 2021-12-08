@@ -63,12 +63,12 @@ export default {
     debug: false,  // here set your API url
   },
 
-  // proxy: {
+  proxy: {
   //   // '/api': 'http://onetopbac.test', //process.env.API_HOST, // 'http://onetopbac.test',
   //   // "/api/v1/admin/":  process.env.API_BASE ,
     
     '/api/': { target: process.env.API_HOST, pathRewrite: { '^/api/': '' } }
-  // },
+  },
 
 
   auth: {
