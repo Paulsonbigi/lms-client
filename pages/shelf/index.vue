@@ -80,11 +80,11 @@ export default {
                 text: 'Book Title',
                 align: 'start',
                 sortable: false,
-                value: 'bookTitle',
+                value: 'appliedBooks.bookTitle',
             },
-            { text: 'Author', value: 'availableCopies' },
-            { text: 'My request ID', value: 'availableCopies' },
-            { text: 'Return Date', value: 'availableCopies' },
+            { text: 'Author', value: 'appliedBooks.authorName' },
+            { text: 'My request ID', value: 'appliedBooks._id' },
+            { text: 'Return Date', value: 'returnDate' },
             ],
         }
     },
@@ -108,7 +108,6 @@ export default {
             'getAllBooksSearch': 'transactions/getAllBooksSearch',
         }),
         editItem(val){
-            console.log(val)
             this.$router.push(`/admins/all-books/edit/${val._id}`)
         },
         searchResult(){

@@ -26,14 +26,14 @@
                 />
               </v-avatar>
             </v-btn>
-            <v-img
+            <img
               v-else
               height="40"
               full-width
               contain
               class="logo"
               src="/img/LMS.png"
-            ></v-img>
+            ></img>
           </v-list-item>
 
           <v-list-item

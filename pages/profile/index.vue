@@ -90,51 +90,16 @@ export default {
     middleware: ['auth', 'isUser'],
     data(){
         return {
-            bookTitle: 'Your Profile',
-            items: [1,  2, 3],
-            dialog: false,
-            bookId: null,
-            numberOfDays: null
+            bookTitle: 'Your Profile'
         }
     },
     computed: {
         ...mapGetters({
-            'singleBook': 'transactions/singleBook'
         }),
-        proposedDate: function(){
-            if(this.numberOfDays){
-                return new Date(theDate.getTime() + this.numberOfDays*24*60*60*1000)
-            }
-        }
     },
     methods: {
-        ...mapActions({
-            'getSingleBook': 'transactions/getSingleBook',
-            'borrowBookAction': 'transactions/borrowBook'
-        }),
-        borrowBook(){
-            this.dialog = true;
-        },
-        async confirmBorrow(){
-            try{
-                let currentDate = new Date();
-                let newDate = currentDate.setDate(currentDate.getDate() + this.numberOfDays);
-                const data = {
-                    numberOfBooks: 1,
-                    bookId: this.bookId,
-                    returnDate: newDate
-                }
-                console.log(data)
-                await this.borrowBookAction(data)
-                this.dialog = false;
-            } catch(err){
-
-            }
-        }
     },
     mounted(){
-        this.bookId = this.$route.params.id
-        this.getSingleBook(this.bookId)
     }
 }
 </script>

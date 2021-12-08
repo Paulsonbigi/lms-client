@@ -160,12 +160,12 @@ export default {
                         requestId: this.approvals
                     }
                     await this.approveRequests(this.approvals)
-                    this.dialog = true;
                     this.$notify({
                         group: 'auth',
                         text: 'Book has been approved',
                         duration: 2000,
                     });
+                    this.dialog = true;
                 } catch(err){
 
                 }

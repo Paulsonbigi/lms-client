@@ -139,7 +139,6 @@ export default {
             }),
 
             clickToApprove(val){
-                console.log(val)
                 this.approvals = val
             },
 

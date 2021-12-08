@@ -213,7 +213,7 @@ export default {
                 return null;
             },
             set(value) {
-                let item = "availableCopies";
+                let item = "noOfCopies";
                 this.SET_BOOK_EDITED_DATA({ item, value });
             },
         },

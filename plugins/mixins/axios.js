@@ -3,6 +3,7 @@ export default function ({ $axios, store, app}){
     $axios.onError(error => {
 
         if (error){
+            console.log(error)
             if (error.response.status === 422) {
                 store.dispatch('validation/setErrors', error.response.data.errors ? error.response.data.errors : null)
 

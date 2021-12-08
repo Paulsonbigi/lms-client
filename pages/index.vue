@@ -115,7 +115,7 @@ export default {
             })
                 this.$router.push("dashboard")
         } catch(e){
-            console.log("ghghgh", e.message)
+            
         }
       }
     },

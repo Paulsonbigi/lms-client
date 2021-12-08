@@ -21,19 +21,11 @@
             <v-btn icon v-if="logo">
               <v-avatar class="px-7" size="70">
                 <img
-                  src="/svg/LMS.svg"
+                  src="/svg/LMS.png"
                   alt="mls logo"
                 />
               </v-avatar>
             </v-btn>
-            <v-img
-              v-else
-              height="40"
-              full-width
-              contain
-              class="logo"
-              src="/img/LMS.png"
-            ></v-img>
           </v-list-item>
 
           <v-list-item

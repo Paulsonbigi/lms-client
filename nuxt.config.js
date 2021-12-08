@@ -58,16 +58,17 @@ export default {
   ],
 
   axios: {
-    proxy: true,
-    debug: false,  // here set your API url
+    baseURL: 'http://localhost:8040'
+    // proxy: true,
+    // debug: false,  // here set your API url
   },
 
-  proxy: {
-    // '/api': 'http://onetopbac.test', //process.env.API_HOST, // 'http://onetopbac.test',
-    // "/api/v1/admin/":  process.env.API_BASE ,
+  // proxy: {
+  //   // '/api': 'http://onetopbac.test', //process.env.API_HOST, // 'http://onetopbac.test',
+  //   // "/api/v1/admin/":  process.env.API_BASE ,
     
-    '/api/': { target: process.env.API_HOST, pathRewrite: { '^/api/': '' } }
-  },
+  //   '/api/': { target: process.env.API_HOST, pathRewrite: { '^/api/': '' } }
+  // },
 
 
   auth: {
