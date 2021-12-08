@@ -58,17 +58,13 @@ export default {
   ],
 
   axios: {
-    baseURL: 'https://lms-servers.herokuapp.com'
-    // proxy: true,
-    // debug: false,  // here set your API url
+    proxy: true,
   },
 
-  // proxy: {
-  // //   // '/api': 'http://onetopbac.test', //process.env.API_HOST, // 'http://onetopbac.test',
-  // //   // "/api/v1/admin/":  process.env.API_BASE ,
+  proxy: {
     
-  //   '/api/': { target: process.env.API_HOST, pathRewrite: { '^/api/': '' } }
-  // },
+    '/api/': { target: process.env.API_HOST, pathRewrite: { '^/api/': '' } }
+  },
 
 
   auth: {
