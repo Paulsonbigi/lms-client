@@ -55,7 +55,7 @@
 
                         <v-card-actions>
                         <v-spacer></v-spacer>
-                            <v-btn @click="confirmBorrow()" color="primary" depressed block class="px-12 w-full bg-primary ">Confirm</v-btn>
+                            <v-btn @click="confirmBorrow()" color="primary" depressed block class="px-12 w-full bg-primary ">{{ loading ? 'A moment please' : 'Confirm'}}</v-btn>
                         </v-card-actions>
                     </v-card>
                     </v-dialog>
@@ -79,7 +79,8 @@ export default {
     computed: {
         ...mapGetters({
             'singleBook': 'transactions/singleBook',
-            'message': 'transactions/message'
+            'message': 'transactions/message',
+            'loading': 'transactions/loading'
         }),
         proposedDate: function(){
             if(this.numberOfDays){

@@ -50,7 +50,7 @@
                         <template else>
                              <v-data-table
                                 :headers="headers"
-                                :items="allBooks"
+                                :items="books"
                                 :items-per-page="5"
                                 class="elevation-0"
                                 >
@@ -122,7 +122,8 @@ export default {
         }
     },
     mounted(){
-        this.getAllBooks(this.search)
+        this.getAllBooks()
+        this.getAllBooksSearch(this.search)
     }
 }
 </script>

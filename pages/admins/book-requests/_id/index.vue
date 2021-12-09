@@ -157,15 +157,16 @@ export default {
             async confirmApproval(){
                 try{
                     const data = {
-                        requestId: this.approvals
+                        userId: this.approvals,
+                        bookId: this.singleBook._id
                     }
-                    await this.approveRequests(this.approvals)
+                    await this.approveRequests(data)
+                    this.dialog = true;
                     this.$notify({
                         group: 'auth',
                         text: 'Book has been approved',
                         duration: 2000,
                     });
-                    this.dialog = true;
                 } catch(err){
 
                 }
@@ -174,6 +175,7 @@ export default {
     mounted(){
         this.bookRequestsId = this.$route.params.id
         this.getSingleBook(this.bookRequestsId)
+        console.log("fknfrjrnf", this.singleBook._id)
     }
   
 }

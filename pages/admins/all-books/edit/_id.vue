@@ -119,7 +119,7 @@
         </v-row>
         <v-row>
             <v-col cols="12" md="4" class="pa-0">
-                <v-btn  color="primary" block class="px-12 bg-primary" @click="editExitedBook()">Edit Book</v-btn>
+                <v-btn  color="primary" block class="px-12 bg-primary" @click="editExitedBook()">{{ loading ? 'Book editing...' : 'Edit Book'}}</v-btn>
             </v-col>
         </v-row>
         </v-container>
@@ -138,6 +138,7 @@ export default {
     computed: {
         ...mapGetters({
             'singleBook': 'transactions/singleBook',
+            'loading': 'administration/loading'
         }),
         authorName: {
             get() {

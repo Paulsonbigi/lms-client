@@ -135,7 +135,7 @@
                     </v-row>
                     <v-row>
                         <v-col cols="12" md="4" class="pa-0">
-                            <v-btn  color="primary" block class="px-12 bg-primary" @click="addNewBook()">Add Book</v-btn>
+                            <v-btn  color="primary" block class="px-12 bg-primary" @click="addNewBook()">{{ loading ? 'Adding new book...' : 'Add Book'}}</v-btn>
                         </v-col>
                     </v-row>
                 </v-form>
@@ -143,7 +143,7 @@
     </div>
 </template>
 <script>
-import { mapActions } from "vuex"
+import { mapActions, mapGetters } from "vuex"
 export default {
     middleware: ['auth', 'isAdmin'],
     data(){
@@ -162,6 +162,11 @@ export default {
             modal: false,
             menu2: false,
         }
+    },
+    computed: {
+        ...mapGetters({
+            'loading': 'administration/loading'
+        })
     },
     methods:{
         ...mapActions({

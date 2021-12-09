@@ -102,12 +102,13 @@ export default {
             'getAllBookRequests': 'administration/getAllBookRequests',
             'getAllPendingRequests': 'administration/getAllPendingRequests',
             'getAllBooks': 'transactions/getAllBooks',
+            'getAllApprovedRequests': 'administration/getAllApprovedRequests',
         })
     },
     mounted(){
         this.getAllBookRequests()
         this.getAllBooks()
-        // this.getAllPendingRequests
+        this.getAllApprovedRequests()
     }
 }
 </script>

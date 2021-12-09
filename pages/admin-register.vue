@@ -125,7 +125,7 @@
                         </v-row>
                         <v-row class=" d-flex justify-center flex-column">
                             <v-btn @click="signIn" color="primary" width="60%" class="bg-primary d-flex mx-auto">{{ registering ? 'Registering' : 'Register'}}</v-btn>
-                            <nuxt-link to="/login" class="text-center mt-3">
+                            <nuxt-link to="/admins/login" class="text-center mt-3">
                                 <span class="accent--text text-center">Already have an account?</span>
                             </nuxt-link>
                         </v-row>

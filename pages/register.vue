@@ -184,7 +184,7 @@ export default {
                 address: this.register.address,
                 role: 'user'
             }
-            if(!this.data){
+            if(!data){
                 this.$notify({
                     group: 'auth',
                     text: `Please enter all fields correctly to continue`,
@@ -209,7 +209,7 @@ export default {
                 this.$router.push("dashboard")
             }
         } catch(e){
-
+            console.log(e)
         }  
       }
     },
