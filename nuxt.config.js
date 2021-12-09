@@ -58,21 +58,21 @@ export default {
   ],
 
   axios: {
-    proxy: true,
-    // baseURL: 'http://localhost:8040'
+    // proxy: true,
+    baseURL: 'http://localhost:8040'
   },
 
   proxy: {
   //   // "/api/v1/admin/":  process.env.API_BASE ,
     
-    '/api/': { target: process.env.API_HOST, pathRewrite: { '^/api/': '' } }
+    '/api/': { target: process.env.API_BASE, pathRewrite: { '^/api/': '' } }
   },
 
 
   auth: {
     strategies: {
       local: {
-//      scheme: "refresh",
+//      scheme: "refreshes",
         token: {
           property: "token", //property name that the Back-end sends for you as a access token for saving on localStorage and cookie of user browser
           global: true,
