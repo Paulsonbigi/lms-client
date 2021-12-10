@@ -2,6 +2,7 @@
   <v-app>
         <nuxt keep-alive />
         <notifications   position="bottom center" group="auth"/>
+        <notifications  position="bottom center" group="all"/>
         <notifications   position="bottom center" group="foo"/>
         <!-- 100% REUSEABLE COMPONENTS  -->
   </v-app>
