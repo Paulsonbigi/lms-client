@@ -58,15 +58,15 @@ export default {
   ],
 
   axios: {
-    proxy: true,
-    // baseURL: 'http://localhost:8040'
+    // proxy: true,
+    baseURL: 'http://localhost:8040'
   },
 
-  proxy: {
+  // proxy: {
   //   // "/api/v1/admin/":  process.env.API_BASE ,
     
-    '/api/': { target: process.env.API_BASE, pathRewrite: { '^/api/': '' } }
-  },
+  //   '/api/': { target: process.env.API_BASE, pathRewrite: { '^/api/': '' } }
+  // },
 
 
   auth: {

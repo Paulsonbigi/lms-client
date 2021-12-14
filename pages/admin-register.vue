@@ -58,29 +58,31 @@
                                 </div>
                                 <div>
                                     <v-text-field
-                                    v-model="register.password"
-                                    placeholder="Password"
-                                    :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
-                                    :type="show1 ? 'text' : 'password'"
-                                    label="Password"
-                                    dense
-                                    outlined
-                                    block
-                                    :required="true"
-                                    class="ma-0 p-0 "
-                                    @click:append="show1 = !show1"
+                                        v-model="register.password"
+                                        placeholder="Password"
+                                        :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+                                        :type="show1 ? 'text' : 'password'"
+                                        @click:append="show1 = !show1"
+                                        label="Password,(A-Z, a-z, @!~$%)"
+                                        dense
+                                        outlined
+                                        block
+                                        :required="true"
+                                        class="ma-0 p-0 mb-3"
                                     />
+                                </div>
                                 </div>
                                 <div>
                                     <v-text-field
-                                    v-model="register.confirmPassword"
-                                    placeholder="Re-enter Password"
-                                    label="Re-enter Password"
-                                    dense
-                                    outlined
-                                    block
-                                    :required="true"
-                                    class="ma-0 p-0 "
+                                        v-model="register.confirmPassword"
+                                        placeholder="Re-enter Password"
+                                        type="password"
+                                        label="Re-enter Password"
+                                        dense
+                                        outlined
+                                        block
+                                        :required="true"
+                                        class="ma-0 p-0 "
                                     />
                                 </div>
                             </v-col>
@@ -180,22 +182,13 @@ export default {
                 role: 'admin'
             }
             await this.userRegister(data);
-            if(this.registering = false){
-                
-                await this.$auth.loginWith("local", {
-                    data: {
-                        email: this.login.usernameEmail,
-                        username: this.login.usernameEmail,
-                        password: this.login.password
-                    }
-                });
                 await this.$notify({
                     group: 'auth',
                     text: `Registration successful`,
                     duration: 1500,
                 })
-                this.$router.push("/admins/dashboard")
-            }
+                this.$router.push("/admins/login")
+            
         } catch(e){
 
         }  

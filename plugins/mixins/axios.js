@@ -50,6 +50,27 @@ export default function ({ $axios, store, app}){
                 this.$router.push(`/login`)
                
             }
+
+            if (error.response.status === 404) {
+                let errors = {
+                    'general_error' : [error.response.data.message]
+                }
+                store.dispatch('validation/setErrors', errors ? errors : null)
+                app.$notify({
+                    group: 'auth',
+                    title: 'Important message',
+                    text: error.response.data.message,
+                    type: 'success',
+                    duration: 15000,
+                })
+
+                let messageData3 = {'text': "You're not logged in", 'target': null, 'type': 'danger', 'time': null}
+
+                store.dispatch('message/setMessage', messageData3)
+
+                this.$router.push(`/login`)
+               
+            }
     }
         return Promise.reject(error)
     })
@@ -73,7 +94,7 @@ export default function ({ $axios, store, app}){
                             title: 'Important message',
                             text: response.data.message,
                             type: 'success',
-                            duration: 2000,
+                            duration: 1500,
                         })
                     }
                 }

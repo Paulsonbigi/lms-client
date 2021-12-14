@@ -64,7 +64,7 @@
                                     :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
                                     :type="show1 ? 'text' : 'password'"
                                     @click:append="show1 = !show1"
-                                    label="Password"
+                                    label="Password,(A-Z, a-z, @!~$%)"
                                     dense
                                     outlined
                                     block
@@ -185,22 +185,13 @@ export default {
                 role: 'user'
             }
             await this.userRegister(data);
-            if(this.registering = false){
-                
-                await this.$auth.loginWith("local", {
-                    data: {
-                        email: this.login.usernameEmail,
-                        username: this.login.usernameEmail,
-                        password: this.login.password
-                    }
-                });
-                await this.$notify({
+                 this.$notify({
                     group: 'auth',
                     text: `Registration successful`,
                     duration: 1500,
                 })
-                this.$router.push("dashboard")
-            }
+                this.$router.push("/login")
+            
         } catch(e){
             console.log(e)
         }  
