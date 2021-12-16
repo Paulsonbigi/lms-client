@@ -84,7 +84,7 @@ export default {
   }),
   computed: {
     rule() {
-    //   return DEFAULT_RULE;
+    //   return DEFAULT_RULES;
     },
   },
   methods: {
