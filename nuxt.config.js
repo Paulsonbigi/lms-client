@@ -1,5 +1,5 @@
 import colors from 'vuetify/es5/util/colors'
-
+// require()
 export default {
   ssr: true,
   target: 'static',
@@ -65,7 +65,7 @@ export default {
   proxy: {
     // "/api/v1/admin/":  process.env.API_BASE ,
     
-    '/api/': { target: process.env.API_BASE, pathRewrite: { '^/api/': '' } }
+    '/api/': { target: 'https://lms-servers.herokuapp.com/', pathRewrite: { '^/api/': '' } }
   },
 
 
