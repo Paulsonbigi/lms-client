@@ -54,24 +54,24 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     '@nuxtjs/axios',
-    '@nuxtjs/auth-next'
+    '@nuxtjs/auth-next',
+    '@nuxtjs/proxy'
   ],
 
-  // axios: {
+  axios: {
+    proxy: true
   //   baseURL: 'https://lms-servers.herokuapp.com/'
-  // },
+  },
+  
+  proxy: [
+    'https://lms-servers.herokuapp.com/',
+  ],
 
   // proxy: {
   //   // "/api/v1/admin/":  process.env.API_BASE ,
 
   //   '/api/': { target: 'https://lms-servers.herokuapp.com/', pathRewrite: { '^/api/': '' } }
   // },
-
-   axios: {
-    baseURL: "https://lms-servers.herokuapp.com/"  // here set your API url
-  },
-
-
 
   auth: {
     strategies: {
