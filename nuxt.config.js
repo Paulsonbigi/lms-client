@@ -58,15 +58,19 @@ export default {
   ],
 
   axios: {
-    proxy: true,
-    // baseURL: 'http://localhost:8040'
+    baseURL: 'https://lms-servers.herokuapp.com/'
   },
 
-  proxy: {
-    // "/api/v1/admin/":  process.env.API_BASE ,
+  // axios: {
+  //   proxy: true,
+  //   // baseURL: 'http://localhost:8040'
+  // },
+
+  // proxy: {
+  //   // "/api/v1/admin/":  process.env.API_BASE ,
     
-    '/api/': { target: 'https://lms-servers.herokuapp.com/', pathRewrite: { '^/api/': '' } }
-  },
+  //   '/api/': { target: 'https://lms-servers.herokuapp.com/', pathRewrite: { '^/api/': '' } }
+  // },
 
 
   auth: {
