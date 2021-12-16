@@ -57,20 +57,20 @@ export default {
     '@nuxtjs/auth-next'
   ],
 
-  axios: {
-    baseURL: 'https://lms-servers.herokuapp.com/'
-  },
-
   // axios: {
-  //   proxy: true,
-  //   // baseURL: 'http://localhost:8040'
+  //   baseURL: 'https://lms-servers.herokuapp.com/'
   // },
 
   // proxy: {
   //   // "/api/v1/admin/":  process.env.API_BASE ,
-    
+
   //   '/api/': { target: 'https://lms-servers.herokuapp.com/', pathRewrite: { '^/api/': '' } }
   // },
+
+   axios: {
+    baseURL: "https://lms-servers.herokuapp.com"  // here set your API url
+  },
+
 
 
   auth: {
