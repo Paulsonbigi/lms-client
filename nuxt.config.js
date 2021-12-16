@@ -68,7 +68,7 @@ export default {
   // },
 
    axios: {
-    baseURL: "https://lms-servers.herokuapp.com"  // here set your API url
+    baseURL: "https://lms-servers.herokuapp.com/"  // here set your API url
   },
 
 
