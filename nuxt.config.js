@@ -58,11 +58,11 @@ export default {
     '@nuxtjs/proxy'
   ],
 
-  axios: {
-    proxy: true
-  //   baseURL: 'https://lms-servers.herokuapp.com/'
-  },
-  
+  // axios: {
+  //   proxy: true
+  // //   baseURL: 'https://lms-servers.herokuapp.com/'
+  // },
+
   proxy: [
     'https://lms-servers.herokuapp.com/',
   ],
