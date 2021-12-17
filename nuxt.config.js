@@ -63,15 +63,15 @@ export default {
   // //   baseURL: 'https://lms-servers.herokuapp.com/'
   },
 
-  proxy: {
-    '/api': { target: 'https://lms-servers.herokuapp.com/', ws: false },
-  },
-
   // proxy: {
-  //   // "/api/v1/admin/":  process.env.API_BASE ,
-
-  //   '/api/': { target: 'https://lms-servers.herokuapp.com/', pathRewrite: { '^/api/': '' } }
+  //   '/api': { target: 'https://lms-servers.herokuapp.com/', ws: false },
   // },
+
+  proxy: {
+    // "/api/v1/admin/":  process.env.API_BASE ,
+
+    '/api/': { target: process.env.API_BASE, pathRewrite: { '^/api/': '' } }
+  },
 
   auth: {
     strategies: {
