@@ -70,13 +70,8 @@ export default {
   // },
 
    axios: {
-  //   baseURL: "https://lms-servers.herokuapp.com"  // here set your API url
+    baseURL: "https://lms-servers.herokuapp.com"  // here set your API url
    },
-
-
-
-  //   '/api/': { target: process.env.API_BASE, pathRewrite: { '^/api/': '' } }
-  // },
 
   auth: {
     strategies: {
