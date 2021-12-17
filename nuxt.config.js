@@ -59,18 +59,18 @@ export default {
 
   axios: {
     proxy: true,
-    // baseURL: 'http://localhost:8040'
+    '/api/': { target: 'https://lms-servers.herokuapp.com/', pathRewrite: { '^/api/': '' } }
   },
 
   // proxy: {
   //   // "/api/v1/admin/":  process.env.API_BASE ,
 
-  //   '/api/': { target: 'https://lms-servers.herokuapp.com/', pathRewrite: { '^/api/': '' } }
+
   // },
 
-   axios: {
-    baseURL: "https://lms-servers.herokuapp.com"  // here set your API url
-  },
+  //  axios: {
+  //   baseURL: "https://lms-servers.herokuapp.com"  // here set your API url
+  // },
 
 
 
