@@ -4,7 +4,7 @@ export const state = () => ({
   loggedIn: false,
   user: false,
   registering: false
-  
+
 });
 
 export const getters = {
@@ -26,15 +26,15 @@ export const mutations = {
 export const actions = {
   async userRegister({ commit }, registerData) {
     commit("SET_REGISTERING", true);
-    await this.$axios.$post("/api/user/create", registerData);
+    await this.$axios.$post("/user/create", registerData);
     commit("SET_REGISTERING", false);
   },
 
   async passwordResetRequest({ commit }, resetData) {
-    
+
   },
 
   async changePassword({ commit }, data) {
-    
+
   }
 };
