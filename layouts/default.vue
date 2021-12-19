@@ -250,18 +250,18 @@
         >
         <v-card>
             <v-card-title class="text-h5 text-center primary--text">
-                Borrow Book
+                Log Out
             </v-card-title>
 
             <v-card-text class="text-center">
                 Are you sure you want to logout
             </v-card-text>
 
-<v-card-actions>
-            <v-spacer></v-spacer>
-                <v-btn @click="confirmLogout()" color="primary" depressed block class="px-12 w-full bg-primary ">Confirm</v-btn>
-            </v-card-actions>
-        </v-card>
+            <v-card-actions>
+                <v-spacer></v-spacer>
+                    <v-btn @click="confirmLogout()" color="primary" depressed block class="px-12 w-full bg-primary ">Confirm</v-btn>
+                </v-card-actions>
+            </v-card>
         </v-dialog>
             
     <v-main>
