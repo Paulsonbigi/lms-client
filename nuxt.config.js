@@ -58,20 +58,20 @@ export default {
     '@nuxtjs/proxy'
   ],
 
-  axios: {
-    proxy: true
-  // //   baseURL: 'https://lms-servers.herokuapp.com/'
-  },
-
-  // proxy: {
-  //   '/api': { target: 'https://lms-servers.herokuapp.com/', ws: false },
+  // axios: {
+  //   proxy: true,
+  //   '/api/': { target: 'https://lms-servers.herokuapp.com/', pathRewrite: { '^/api/': '' } }
   // },
 
-  proxy: {
-    // "/api/v1/admin/":  process.env.API_BASE ,
+  // proxy: {
+  //   // "/api/v1/admin/":  process.env.API_BASE ,
 
-    '/api/': { target: process.env.API_BASE, pathRewrite: { '^/api/': '' } }
-  },
+
+  // },
+
+   axios: {
+    baseURL: "https://lms-servers.herokuapp.com"  // here set your API url
+   },
 
   auth: {
     strategies: {
