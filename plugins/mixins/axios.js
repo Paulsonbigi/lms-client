@@ -12,7 +12,6 @@ export default function ({ $axios, store, app}){
                 
             }
             if (error.response.status === 400) {
-                console.log("kmk", error.response.data.message)
                 let errors = {
                     'other_error' : [error.response.data.message]
                 }
@@ -23,7 +22,7 @@ export default function ({ $axios, store, app}){
                     text: error.response.data.message,
                     type: 'success',
                     max: "1",
-                    duration: 15000,
+                    duration: 2000,
                 })
 
                 let messageData2 = {'text': error.response.data.message, 'target': null, 'type': 'info', 'time': null}
@@ -42,7 +41,7 @@ export default function ({ $axios, store, app}){
                     text: error.response.data.message,
                     type: 'success',
                     max: "1",
-                    duration: 15000,
+                    duration: 2000,
                 })
 
                 let messageData3 = {'text': "You're not logged in", 'target': null, 'type': 'danger', 'time': null}
@@ -64,7 +63,7 @@ export default function ({ $axios, store, app}){
                     text: error.response.data.message,
                     type: 'success',
                     max: "1",
-                    duration: 15000,
+                    duration: 2000,
                 })
 
                 let messageData3 = {'text': "You're not logged in", 'target': null, 'type': 'danger', 'time': null}
@@ -98,7 +97,7 @@ export default function ({ $axios, store, app}){
                             text: response.data.message,
                             type: 'success',
                             max: "1",
-                            duration: 1500,
+                            duration: 2000,
                         })
                     }
                 }

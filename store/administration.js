@@ -52,7 +52,6 @@ export const actions = {
   },
 
   async approveRequests({ commit },requestData) {
-    console.log("the two params", requestData)
     commit("SET_LOADING", true);
     await this.$axios.$patch("/admin/borrow-approve/"+ requestData.userId + '/' + requestData.bookId);
     commit("SET_LOADING", false);

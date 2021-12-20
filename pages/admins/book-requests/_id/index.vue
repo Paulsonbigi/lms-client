@@ -177,7 +177,6 @@ export default {
     mounted(){
         this.bookRequestsId = this.$route.params.id
         this.getSingleBook(this.bookRequestsId)
-        console.log("fknfrjrnf", this.singleBook._id)
     }
   
 }
