@@ -1,9 +1,9 @@
 <template>
   <v-app>
         <nuxt keep-alive />
-        <notifications   position="bottom center" group="auth"/>
-        <notifications  position="bottom center" group="all"/>
-        <notifications   position="bottom center" group="foo"/>
+        <notifications   position="bottom center" group="auth" max="1"/>
+        <notifications  position="bottom center" group="all" max="1"/>
+        <notifications   position="bottom center" group="foo" max="1"/>
         <!-- 100% REUSEABLE COMPONENTS  -->
   </v-app>
 </template>

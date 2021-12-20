@@ -22,6 +22,7 @@ export default function ({ $axios, store, app}){
                     title: 'Important message',
                     text: error.response.data.message,
                     type: 'success',
+                    max: "1",
                     duration: 15000,
                 })
 
@@ -40,6 +41,7 @@ export default function ({ $axios, store, app}){
                     title: 'Important message',
                     text: error.response.data.message,
                     type: 'success',
+                    max: "1",
                     duration: 15000,
                 })
 
@@ -61,6 +63,7 @@ export default function ({ $axios, store, app}){
                     title: 'Important message',
                     text: error.response.data.message,
                     type: 'success',
+                    max: "1",
                     duration: 15000,
                 })
 
@@ -94,6 +97,7 @@ export default function ({ $axios, store, app}){
                             title: 'Important message',
                             text: response.data.message,
                             type: 'success',
+                            max: "1",
                             duration: 1500,
                         })
                     }
