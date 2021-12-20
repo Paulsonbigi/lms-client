@@ -101,12 +101,7 @@ export default {
                     password: this.login.password
                 }
             });
-            await this.$notify({
-                group: 'all',
-                text: `Welcome ...`,
-                duration: 1500,
-            })
-                this.$router.push("dashboard")
+            this.$router.push("dashboard")
         } catch(e){
             
         }

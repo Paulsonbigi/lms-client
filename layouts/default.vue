@@ -267,8 +267,8 @@
     <v-main>
       <v-container fluid>
         <nuxt/>
-        <notifications  position="top center" group="all"/>
-        <notifications  position="bottom center" group="auth"/>
+        <notifications  position="top center" group="all" max="1"/>
+        <notifications  position="bottom center" group="auth" max="1"/>
       </v-container>
     </v-main>
   </v-app>

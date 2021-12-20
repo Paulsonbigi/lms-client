@@ -167,6 +167,7 @@ export default {
                         text: 'Book has been approved',
                         duration: 2000,
                     });
+                    this.dialog = true;
                 } catch(err){
 
                 }

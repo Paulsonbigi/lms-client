@@ -116,11 +116,6 @@ export default {
                     });
                 }
                 await this.borrowBookAction(data)
-                    this.$notify({
-                    group: 'auth',
-                    text: 'Request successful, admin will review your request shortly',
-                    duration: 1500,
-                });
                 this.dialog = false;
             } catch(err){
 
