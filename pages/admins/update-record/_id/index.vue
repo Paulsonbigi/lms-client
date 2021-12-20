@@ -163,6 +163,7 @@ export default {
                     this.$notify({
                         group: 'auth',
                         text: 'Book has been updated',
+                        max: "1",
                         duration: 2000,
                     });
                 } catch(err){

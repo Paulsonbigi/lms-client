@@ -112,6 +112,7 @@ export default {
                         this.$notify({
                             group: 'auth',
                             text: 'You cannot borrow same book twice, admin is processing your request',
+                            max: "1",
                             duration: 2000,
                     });
                 }

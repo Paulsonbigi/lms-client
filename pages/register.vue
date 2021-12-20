@@ -188,6 +188,7 @@ export default {
                  this.$notify({
                     group: 'auth',
                     text: `Registration successful`,
+                    max: "1",
                     duration: 1500,
                 })
                 this.$router.push("/login")

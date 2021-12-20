@@ -194,6 +194,7 @@ export default {
                 await this.$notify({
                     group: 'auth',
                     text: `${this.title} successfully added`,
+                    max: "1",
                     duration: 1500,
                 })
             } catch(err){

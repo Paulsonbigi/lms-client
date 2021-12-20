@@ -44,6 +44,7 @@ export default {
         this.$notify({
             group: 'all',
             text: `Welcome ${this.user.firstName}`,
+            max: "1",
             duration: 1500,
         })
         this.getMyBorrowedBooks()

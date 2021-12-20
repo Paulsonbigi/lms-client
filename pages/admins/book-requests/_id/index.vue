@@ -146,6 +146,7 @@ export default {
                     this.$notify({
                         group: 'auth',
                         text: 'You need to select at least a book to continue.',
+                        max: "1",
                         duration: 2000,
                     });
                     this.dialog = false;
