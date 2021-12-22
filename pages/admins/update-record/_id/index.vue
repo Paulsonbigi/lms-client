@@ -91,17 +91,17 @@
             max-width="290"
             >
             <v-card>
-                <v-card-title class="text-h5 text-center primary--text">
-                    Borrow Book
+                <v-card-title class="text-h5 d-flex justify-center mx-auto text-center primary--text">
+                    Update Record
                 </v-card-title>
 
                 <v-card-text class="text-center">
-                    Are you sure you want to approve this book
+                    Are you sure you have received {{singleBook.bookTitle}} from the selected persons?
                 </v-card-text>
 
                 <v-card-actions>
                 <v-spacer></v-spacer>
-                    <v-btn @click="confirmApproval()" color="primary" depressed block class="px-12 w-full bg-primary ">Confirm</v-btn>
+                    <v-btn @click="confirmApproval()" color="primary" depressed block class="px-12 w-full bg-primary ">{{loading ? "A moment.." : "Confirm"}}</v-btn>
                 </v-card-actions>
             </v-card>
         </v-dialog>
@@ -126,6 +126,7 @@ export default {
     computed: {
             ...mapGetters({
                 'bookRequests': 'administration/bookRequests',
+                'loading': 'administration/loading',
                 'singleBook': 'transactions/singleBook'
             })
         },

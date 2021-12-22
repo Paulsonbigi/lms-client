@@ -45,12 +45,12 @@
                     max-width="290"
                     >
                     <v-card>
-                        <v-card-title class="text-h5 text-center primary--text">
+                        <v-card-title class="text-h5 text-center d-flex justify-center mx-auto primary--text">
                             Borrow Book
                         </v-card-title>
 
                         <v-card-text class="text-center">
-                            Are you sure you want to borrow this book for {{numberOfDays}} days
+                            Are you sure you want to borrow {{singleBook.bookTitle}} for {{numberOfDays}} days
                         </v-card-text>
 
                         <v-card-actions>
