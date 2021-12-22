@@ -135,12 +135,14 @@
         </v-card>
         <v-dialog
             v-model="show"
-            max-width="290"
+            max-width="500"
+            min-height="500"
         >
-        <v-card>
+        <v-card class=" d-flex justify-center flex-column">
+            <img src="/svg/success.svg" class="d-flex justify-center mx-auto mt-16 mb-2" width="20%" alt="Login image"/>
 
-            <v-card-text class="text-center">
-                Registration Successful
+            <v-card-text class="text-center pb-16 text-h5">
+                Your registration was Successful
             </v-card-text>
             </v-card>
         </v-dialog>
