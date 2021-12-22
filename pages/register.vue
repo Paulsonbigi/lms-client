@@ -158,7 +158,7 @@ export default {
   data: () => ({
     dialog: true,
     valid: false,
-    show: true,
+    show: false,
     show1: false,
     register: {
       firstName: null,
