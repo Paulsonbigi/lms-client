@@ -133,6 +133,17 @@
                         </v-row>
                     </v-form>
         </v-card>
+        <v-dialog
+            v-model="show"
+            max-width="290"
+        >
+        <v-card>
+
+            <v-card-text class="text-center">
+                Registration Successful
+            </v-card-text>
+            </v-card>
+        </v-dialog>
   </v-app>
 </template>
 
@@ -144,6 +155,7 @@ export default {
   // middleware: "guest",
   data: () => ({
     dialog: true,
+    show: false,
     valid: false,
     show1: false,
     register: {
@@ -169,7 +181,7 @@ export default {
     }),
     async signIn() {
         try{
-            const data = {
+            const data1 = {
                 firstName: this.register.firstName,
                 lastName: this.register.lastName,
                 username: this.register.username,
@@ -181,17 +193,20 @@ export default {
                 address: this.register.address,
                 role: 'admin'
             }
-            await this.userRegister(data);
-                await this.$notify({
-                    group: 'auth',
-                    text: `Registration successful`,
-                    max: "1",
-                    duration: 1500,
-                })
-                this.$router.push("/admins/login")
+            await this.userRegister(data1);
+            this.show = true
+            await this.$auth.loginWith("local", {
+                data: {
+                    email: data1.email,
+                    password: data1.password
+                }
+            });
+                
+            this.show = false
+            this.$router.push("/admins/dashboard")
             
         } catch(e){
-
+            console.log(e)
         }  
       }
     },
