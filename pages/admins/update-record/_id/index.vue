@@ -2,14 +2,14 @@
     <main>
     <v-container>
         <v-item-group active-class="primary">
-                <div class="text-h6 text-left font-weight-medium grey--text mb-10 text-capitalize">'{{singleBook.bookTitle}}'</span></div>
+                <div class="text-h6 text-left font-weight-medium grey--text mb-10 text-capitalize">{{singleBook.bookTitle}}</span></div>
                 <div>
                     <v-row>
                         <v-col cols="12" md="4" class="pa-0">
                             <div class="d-flex items-center">
                                 <v-text-field
                                     v-model="search"
-                                    placeholder="Password"
+                                    placeholder="Search User"
                                     append-icon="mdi-magnify"
                                     dense
                                     outlined
@@ -43,45 +43,36 @@
                 </div>
                 <v-row>
                     <v-col  cols="12" class="pa-0">
-                        <div class="text-subtitle-1 text-left font-weight-normal grey--text mb-2" v-if="!bookRequests">
-                            No book request yet, please check back !
+                        <div class="text-subtitle-1 d-flex justify-center mx-auto text-center font-weight-normal grey--text mb-2" v-if="sameApprovedBooks.length < 1">
+                            No pending request requests for {{singleBook.bookTitle}} awaiting return
                         </div>
-                        <template>
+                        <template v-else>
                             <v-simple-table>
                                 <template v-slot:default>
                                 <thead>
                                     <tr>
                                     <th class="text-left">
-                                        <div class="text-subtitle-1 text-left font-weight-medium grey--text mb-2">Users</div>
+                                        Users
                                     </th>
-                                    <th class="text-center">
-                                        Select
+                                    <th class="text-right">
+                                        Update User
                                     </th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody >
                                     <tr
-                                    v-for="(item, index) in singleBook.requestUsers"
-                                    :key="index"
-                                    class="grey--text"
-                                    >
-                                        <td>
-                                            {{ item.firstName }}
-                                        </td>
-                                        <td class="text-center d-flex justify-center">
-                                            <v-checkbox
-                                                v-model="approvals"
-                                                @click="clickToApprove(item._id)"
-                                                multiple
-                                                :value="item._id"
-                                                class="my-auto d-flex"
-                                            ></v-checkbox>
+                                        v-for="item in sameApprovedBooks"
+                                        :key="item.user"
+                                        >
+                                        <td v-if="item.user">{{ item.user.username }}</td>
+                                        <td class="text-right d-flex ml-auto my-auto" v-if="item.user">                                        
+                                            <v-checkbox v-model="selected" color="primary" class="d-flex justify-content-end ml-auto align-right" :value="item._id" :multiple="true"></v-checkbox>
                                         </td>
                                     </tr>
                                 </tbody>
                                 </template>
                             </v-simple-table>
-                            </template>
+                        </template>
                     </v-col>
                 </v-row>
         </v-item-group>
@@ -116,17 +107,22 @@ export default {
   data(){
       return {
         dialog: false,
-        loading: false,
         search: null,
         bookTitle: 'Purpose driven life',
         checkbox: false,
-        approvals: null
+        approvals: null,
+        selected: [],
+        headers: [
+            { text: 'Users', value: 'user.username' },
+            { text: '', value: 'actions', sortable: false, align: 'right' }
+        ],
       }
     },
     computed: {
             ...mapGetters({
                 'bookRequests': 'administration/bookRequests',
                 'loading': 'administration/loading',
+                'sameApprovedBooks': 'administration/sameApprovedBooks',
                 'singleBook': 'transactions/singleBook'
             })
         },
@@ -137,6 +133,7 @@ export default {
             ...mapActions({
                 'getSingleBook': 'transactions/getSingleBook',
                 'updateRequests': 'administration/updateRequests',
+                'getSameBookRequestsApproved': 'administration/getSameBookRequestsApproved',
             }),
 
             clickToApprove(val){
@@ -144,7 +141,7 @@ export default {
             },
 
             async approveReq(){
-                if(!this.approvals){
+                if(this.selected.length < 1){
                     this.$notify({
                         group: 'auth',
                         text: 'You need to select at least a book to continue.',
@@ -159,7 +156,11 @@ export default {
 
             async confirmApproval(){
                 try{
-                    await this.updateRequests(this.approvals)
+                    const data = {
+                        requestIds: this.selected,
+                        bookId: this.bookRequestsId
+                    }
+                    await this.updateRequests(data)
                     this.dialog = true;
                     this.$notify({
                         group: 'auth',
@@ -175,6 +176,7 @@ export default {
     mounted(){
         this.bookRequestsId = this.$route.params.id
         this.getSingleBook(this.bookRequestsId)
+        this.getSameBookRequestsApproved(this.$route.params.id)
     }
   
 }

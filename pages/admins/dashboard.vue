@@ -17,7 +17,7 @@
                         <v-card  class="d-flex align-center justify-center flex-column pa-2"  height="150" >
                             <nuxt-link to="/admins/all-books">
                                 <div class="text-subtitle-1 text-center mx-auto font-weight-normal grey--text">Number of books borrowed </div>
-                                <div class="text-h3 text-center mx-auto primary--text">{{allBooks.length}}</div>
+                                <div class="text-h3 text-center mx-auto primary--text">{{allApprovedRequests.length}}</div>
                             </nuxt-link>
                         </v-card>
                     </v-item >
@@ -39,19 +39,18 @@ export default {
     computed: {
         ...mapGetters({
             'allUsers': 'administration/allUsers',
-            'allBooks': 'transactions/allBooks'
+            'allApprovedRequests': 'administration/allApprovedRequests',
         })
     },
     methods: {
         ...mapActions({
             'getAllUsers': 'administration/getAllUsers',
-            'getAllBooks': 'transactions/getAllBooks'
+            'getAllApprovedRequests': 'administration/getAllApprovedRequests',
         })
     },
     mounted(){
         this.getAllUsers()
-        this.getAllBooks()
-        
+        this.getAllApprovedRequests()
     }
 }
 </script>

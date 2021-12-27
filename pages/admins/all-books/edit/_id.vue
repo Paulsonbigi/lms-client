@@ -1,7 +1,7 @@
 <template>
     <main>
     <v-container>
-        <div class="text-h6 text-left font-weight-medium grey--text mb-10 text-capitalize pa-0">Edit '{{singleBook.bookTitle}}'</span></div>
+        <div class="text-h6 text-left font-weight-medium grey--text mb-10 text-capitalize pa-0">Edit {{singleBook.bookTitle}}</span></div>
         <v-row>
             <v-col cols="12" md="4" class="pa-2">
                 <div>

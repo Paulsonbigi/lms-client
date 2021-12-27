@@ -249,7 +249,7 @@
         max-width="290"
         >
         <v-card>
-            <v-card-title class="text-h5 text-center primary--text">
+            <v-card-title class="text-h5 d-flex justify-center mx-auto  text-center primary--text">
                 Log Out
             </v-card-title>
 
@@ -267,8 +267,8 @@
     <v-main>
       <v-container fluid>
         <nuxt/>
-        <notifications  position="top center" group="all" max="1"/>
-        <notifications  position="bottom center" group="auth" max="1"/>
+        <notifications  position="top center" group="all" :max="1"/>
+        <notifications  position="bottom center" group="auth" :max="1"/>
       </v-container>
     </v-main>
   </v-app>

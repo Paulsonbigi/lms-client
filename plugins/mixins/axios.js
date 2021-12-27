@@ -90,7 +90,7 @@ export default function ({ $axios, store, app}){
                     let messageData3 = {'text': response.data.message, 'target': null, 'type': 'success', 'time': null}
                     store.dispatch('message/setMessage', messageData3)
 
-                    if( response.config.method === 'post' ||  response.config.method === 'delete'){
+                    if( response.config.method === 'post' ||  response.config.method === 'delete' ||  response.config.method === 'patch'){
                         app.$notify({
                             group: 'all',
                             title: 'Important message',

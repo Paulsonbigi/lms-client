@@ -6,7 +6,9 @@ export const state = () => ({
   bookRequests: [],
   sameBooks: [],
   pendingRequests: [],
-  allApprovedRequests: []
+  allApprovedRequests: [],
+  allSameBooks: [],
+  sameApprovedBooks: []
 });
 
 export const getters = {
@@ -15,7 +17,9 @@ export const getters = {
     bookRequests: state => state.bookRequests,
     sameBooks: state => state.sameBooks,
     pendingRequests: state => state.pendingRequests,
-    allApprovedRequests: state => state.allApprovedRequests
+    allApprovedRequests: state => state.allApprovedRequests,
+    allSameBooks: state => state.allSameBooks,
+    sameApprovedBooks: state => state.sameApprovedBooks
 };
 
 export const mutations = {
@@ -41,7 +45,16 @@ export const mutations = {
 
   SET_ALL_APPROVED_REQUESTS(state, allApprovedRequests){
     state.allApprovedRequests = allApprovedRequests
-  }
+  },
+
+  SET_SAME_BOOKS_BY_TITLE(state, allSameBooks) {
+    state.allSameBooks = allSameBooks
+  },
+
+  SET_SAME_APPROVED_BOOKS_BY_TITLE(state, sameApprovedBooks){
+    state.sameApprovedBooks = sameApprovedBooks
+  } 
+  
 };
 
 export const actions = {
@@ -53,13 +66,14 @@ export const actions = {
 
   async approveRequests({ commit },requestData) {
     commit("SET_LOADING", true);
-    await this.$axios.$patch("/api/admin/borrow-approve/"+ requestData.userId + '/' + requestData.bookId);
+    await this.$axios.$patch("/api/admin/borrow-approve/"+ requestData.requestIds + "/" + requestData.bookId);
     commit("SET_LOADING", false);
   },
 
-  async updateRequests({ commit }, bookData) {
+  async updateRequests({ commit }, requestData) {
+    console.log("from store", requestData.bookId)
     commit("SET_LOADING", true);
-    await this.$axios.$patch("/api/admin/updates-record/"+ bookData);
+    await this.$axios.$patch("/api/admin/updates-record/"+ requestData.requestIds + "/" + requestData.bookId);
     commit("SET_LOADING", false);
   },
 
@@ -88,6 +102,20 @@ export const actions = {
     commit("SET_LOADING", true);
     const { data }  = await this.$axios.$get("/api/admin/get-all-pending-requests/"+requestId)
     commit('SET_PENDING_REQUESTS', data)
+    commit("SET_LOADING", false)
+  },
+
+  async getSameBookRequestsPending({ commit }, requestId) {
+    commit("SET_LOADING", true);
+    const { data }  = await this.$axios.$get("/api/borrow/all-requests-same-title/"+requestId)
+    commit('SET_SAME_BOOKS_BY_TITLE', data)
+    commit("SET_LOADING", false)
+  },
+
+  async getSameBookRequestsApproved({ commit }, requestId) {
+    commit("SET_LOADING", true);
+    const { data }  = await this.$axios.$get("/api/borrow/all-approved-requests-same-title/"+requestId)
+    commit('SET_SAME_APPROVED_BOOKS_BY_TITLE', data)
     commit("SET_LOADING", false)
   },
 

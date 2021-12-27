@@ -5,10 +5,10 @@
                 
                 <v-row>
                     <v-col  cols="12" >
-                        <div class="text-subtitle-1 text-left font-weight-normal grey--text mb-2" v-if="!books">
+                        <div class="text-subtitle-1 text-left font-weight-normal grey--text mb-2" v-if="books.length < 1">
                             No book has been added yet, please check back !
                         </div>
-                        <template>
+                        <template v-else>
                             <v-simple-table>
                                 <template v-slot:default>
                                 <thead>

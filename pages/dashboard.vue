@@ -6,7 +6,7 @@
                     <v-col  cols="12" md="4" >
                         <v-item >
                             <v-card  class="d-flex align-center justify-center flex-column pa-2"  height="150" >
-                                <nuxt-link to="">
+                                <nuxt-link to="/shelf">
                                     <div class="text-subtitle-1 text-center mx-auto font-weight-normal grey--text">Number of books borrowed </div>
                                     <div class="text-h3 text-center mx-auto primary--text">{{borrowedBooks.length}}</div>
                                 </nuxt-link>

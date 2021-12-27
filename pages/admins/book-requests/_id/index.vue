@@ -2,14 +2,14 @@
     <main>
     <v-container>
         <v-item-group active-class="primary">
-                <div class="text-h6 text-left font-weight-medium grey--text mb-10 text-capitalize">'{{singleBook.bookTitle}}'</span></div>
+                <div class="text-h6 text-left font-weight-medium grey--text mb-10 text-capitalize">{{singleBook.bookTitle}}</span></div>
                 <div>
                     <v-row>
                         <v-col cols="12" md="4" class="pa-0">
                             <div class="d-flex items-center">
                                 <v-text-field
                                     v-model="search"
-                                    placeholder="Password"
+                                    placeholder="Search User"
                                     append-icon="mdi-magnify"
                                     dense
                                     outlined
@@ -43,42 +43,36 @@
                 </div>
                 <v-row>
                     <v-col  cols="12" class="pa-0">
-                        <template>
+                        <div class="text-subtitle-1 d-flex justify-center mx-auto text-center font-weight-normal grey--text mb-2" v-if="allSameBooks.length < 1">
+                            No pending request requests for {{singleBook.bookTitle}}
+                        </div>
+                        <template v-else>
                             <v-simple-table>
                                 <template v-slot:default>
                                 <thead>
                                     <tr>
                                     <th class="text-left">
-                                        <div class="text-subtitle-1 text-left font-weight-medium grey--text mb-2">Users</div>
+                                        Users
                                     </th>
-                                    <th class="text-center">
-                                        Select
+                                    <th class="text-right">
+                                        Update User
                                     </th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr
-                                    v-for="(item, index) in singleBook.requestUsers"
-                                    :key="index"
-                                    class="grey--text"
+                                    v-for="item in allSameBooks"
+                                    :key="item.name"
                                     >
-                                        <td>
-                                            {{ item.firstName }}
-                                        </td>
-                                        <td class="text-center d-flex justify-center">
-                                            <v-checkbox
-                                                v-model="approvals"
-                                                @click="clickToApprove(item._id)"
-                                                multiple
-                                                :value="item._id"
-                                                class="my-auto d-flex"
-                                            ></v-checkbox>
-                                        </td>
+                                    <td>{{ item.username }}</td>
+                                    <td class="text-right d-flex ml-auto">                                        
+                                        <v-checkbox v-model="selected" color="primary" class="d-flex justify-content-end ml-auto align-right" :value="item._id" :multiple="true"></v-checkbox>
+                                    </td>
                                     </tr>
                                 </tbody>
                                 </template>
                             </v-simple-table>
-                            </template>
+                        </template>
                     </v-col>
                 </v-row>
         </v-item-group>
@@ -93,7 +87,7 @@
                 </v-card-title>
 
                 <v-card-text class="text-center">
-                    Are you sure you want lend {{singleBook.bookTitle}} to the user?
+                    Are you sure you want lend {{singleBook.bookTitle}} to the {{selected.length}} {{selected.length < 2 ? "user" : "users"}} selected?
                 </v-card-text>
 
                 <v-card-actions>
@@ -109,21 +103,26 @@
 import { mapGetters, mapActions, mapMutations } from "vuex"
 export default {
     middleware: ['auth', 'isAdmin'],
-  components: {},
-  data(){
-      return {
-        dialog: false,
-        loading: false,
-        search: null,
-        bookTitle: 'Purpose driven life',
-        checkbox: false,
-        approvals: null
-      }
+    data(){
+        return {
+            checkbox: {},
+            selected: [],
+            dialog: false,
+            search: null,
+            bookTitle: 'Purpose driven life',
+            checkbox: false,
+            approvals: null,
+            headers: [
+                { text: 'Users', value: 'username' },
+                { text: 'actions', value: 'actions', sortable: false, align: 'right' }
+            ],
+        }
     },
     computed: {
             ...mapGetters({
                 'bookRequests': 'administration/bookRequests',
                 'loading': 'administration/loading',
+                'allSameBooks': 'administration/allSameBooks',
                 'singleBook': 'transactions/singleBook'
             })
         },
@@ -136,6 +135,7 @@ export default {
                 'getSingleBook': 'transactions/getSingleBook',
                 'approveRequests': 'administration/approveRequests',
                 'getAllBookRequestsById': 'administration/getAllBookRequestsById',
+                'getSameBookRequestsPending': 'administration/getSameBookRequestsPending',
             }),
 
             clickToApprove(val){
@@ -143,7 +143,7 @@ export default {
             },
 
             async approveReq(){
-                if(!this.approvals){
+                if(this.selected.length < 1){
                     this.$notify({
                         group: 'auth',
                         text: 'You need to select at least a book to continue.',
@@ -158,18 +158,19 @@ export default {
 
             async confirmApproval(){
                 try{
+                    console.log("they are", this.selected)
                     const data = {
-                        userId: this.approvals,
-                        bookId: this.singleBook._id
+                        requestIds: this.selected,
+                        bookId: this.bookRequestsId
                     }
                     await this.approveRequests(data)
-                    this.dialog = true;
-                    this.$notify({
-                        group: 'auth',
-                        text: 'Book has been approved',
-                        duration: 2000,
-                    });
-                    this.dialog = true;
+                    this.dialog = false;
+                    // this.$notify({
+                    //     group: 'auth',
+                    //     text: 'Book has been approved',
+                    //     duration: 2000,
+                    // });
+                    // this.dialog = false;
                 } catch(err){
 
                 }
@@ -178,6 +179,7 @@ export default {
     mounted(){
         this.bookRequestsId = this.$route.params.id
         this.getSingleBook(this.bookRequestsId)
+        this.getSameBookRequestsPending(this.$route.params.id)
     }
   
 }

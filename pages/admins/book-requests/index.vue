@@ -8,7 +8,7 @@
                             <div class="d-flex items-center">
                                 <v-text-field
                                     v-model="search"
-                                    placeholder="Password"
+                                    placeholder="Search books"
                                     append-icon="mdi-magnify"
                                     dense
                                     outlined
@@ -40,10 +40,10 @@
 
                 <v-row>
                     <v-col  cols="12" >
-                        <div class="text-subtitle-1 text-left font-weight-normal grey--text mb-2" v-if="!bookRequests">
-                            No book request yet, please check back !
+                        <div class="text-subtitle-1 text-left font-weight-normal grey--text mb-2" v-if="bookRequests.length < 1">
+                            No books yet, please check back!
                         </div>
-                        <template>
+                        <template v-else>
                             <v-simple-table>
                                 <template v-slot:default>
                                 <thead>
