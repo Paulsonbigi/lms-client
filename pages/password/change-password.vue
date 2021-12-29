@@ -10,13 +10,25 @@
                      <v-form ref="form" v-model="valid" lazy-validation v-on:keyup.native.enter="signIn"
                     >
                         <div class="mb-10">
-                            <h2 class="accent--text">Password <span class="primary--text">Reset</span></h2>
+                            <h2 class="accent--text">User <span class="primary--text">Login</span></h2>
                         </div>
                         <div>
                             <v-text-field
-                                v-model="registeredEmail"
-                                placeholder="Email"
-                                label="Enter your email"
+                                v-model="reset.password"
+                                placeholder="New Password"
+                                label="New Password"
+                                dense
+                                outlined
+                                :required="true"
+                                block
+                                class="ma-0 p-0"
+                            />
+                        </div>
+                        <div>
+                            <v-text-field
+                                v-model="reset.confirmPassword"
+                                placeholder="Confirm New Password"
+                                label="Confirm New Password"
                                 dense
                                 outlined
                                 :required="true"
@@ -26,10 +38,7 @@
                         </div>
 
                         <div class="d-flex flex-column justify-center">
-                            <v-btn @click="signIn()" color="primary" block class="px-12 w-full bg-primary ">Submit</v-btn>
-                            <nuxt-link to="/login" class="text-center mt-2">
-                                <span class="accent--text text-center">Already have an account?</span>
-                            </nuxt-link>
+                            <v-btn @click="signIn()" color="primary" block class="px-12 w-full bg-primary ">Login</v-btn>
                         </div>
                     </v-form>
                 </v-col>
@@ -55,7 +64,11 @@ export default {
     dialog: true,
     valid: false,
     show1: false,
-    registeredEmail: null
+    email: null,
+    reset: {
+      password: null,
+      confirmPassword: null,
+    },
   }),
   computed: {
     rule() {
@@ -64,30 +77,26 @@ export default {
   },
   methods: {
       ...mapActions({
-            'passwordResetRequest' : 'passwordResetRequest'
+            'resetPassword' : 'resetPassword'
         }),
     async signIn() {
         
         try{
-            const data = {
-                email: this.registeredEmail
-            }
-            await this.passwordResetRequest(data)
-
-            localStorage.setItem("reset_email", this.registeredEmail)
-            
-            this.$router.push({path: "reset"})
-            
-            this.$notify({
-                group: 'auth',
-                text: `Please enter your registered email`,
-                max: "1",
-                duration: 1500,
-            })
+                const data= {
+                    confirmPassword: this.reset.confirmPassword,
+                    password: this.reset.password,
+                    email: this.email
+                }
+                await this.resetPassword(data)
+                localStorage.remove("reset_email")
+            this.$router.push("login")
         } catch(e){
             
         }
       }
+    },
+    mounted() {
+        this.email = localStorage.getItem("reset_email")
     },
 }
 </script>

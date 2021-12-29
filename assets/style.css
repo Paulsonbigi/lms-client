@@ -1,0 +1,21 @@
+.otp-input{
+    width: 35px;
+    height: 35px;
+    padding: 5px;
+    margin: 0 10px;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    text-align: "center";
+    outline: none;
+}
+@media(max-width: 769px){
+    .otp-input{
+        width: 30px;
+        height: 30px;
+        font-size: 15px;
+    }
+}

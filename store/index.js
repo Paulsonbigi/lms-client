@@ -31,10 +31,21 @@ export const actions = {
   },
 
   async passwordResetRequest({ commit }, resetData) {
-
+    commit("SET_REGISTERING", true);
+    await this.$axios.$post("/user/forgot-password", resetData)
+    commit("SET_REGISTERING", false);
   },
 
-  async changePassword({ commit }, data) {
+  async passwordResetRequestToken({ commit }, data) {
+    commit("SET_REGISTERING", true);
+    await this.$axios.$patch(`/user/reset-password/` + data.token)
+    commit("SET_REGISTERING", true);
+  },
 
+  async resetPassword({ commit }, data) {
+    commit("SET_REGISTERING", true);
+    await this.$axios.$patch(`/user/enter-password`, data)
+    commit("SET_REGISTERING", true);
   }
+
 };

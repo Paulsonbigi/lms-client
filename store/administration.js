@@ -60,7 +60,7 @@ export const mutations = {
 export const actions = {
   async createNewBook({ commit }, bookData) {
     commit("SET_LOADING", true);
-    await this.$axios.$post("//book/create", bookData);
+    await this.$axios.$post("/book/create", bookData);
     commit("SET_LOADING", false);
   },
 
