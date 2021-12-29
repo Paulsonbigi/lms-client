@@ -80,9 +80,9 @@ export default {
             
             this.$notify({
                 group: 'auth',
-                text: `Please enter your registered email`,
+                text: `Please enter your valid email`,
                 max: "1",
-                duration: 1500,
+                duration: 2000,
             })
         } catch(e){
             
