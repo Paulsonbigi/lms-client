@@ -49,6 +49,7 @@ export default {
     components: {},
     data(){
         return {
+            search: null,
             books: [ 
                 {title: 'Purpose driven life', availebleCopies: 10, id: '121313311'},
                 {title: 'Purpose driven life', availebleCopies: 10, id: '121313331'},
@@ -65,10 +66,19 @@ export default {
     methods: {
         ...mapActions({
             'getAllBooks': 'transactions/getAllBooks'
-        })
+        }),
+        searchResult(){
+            const data = {
+                book: this.search ? this.search : ""
+            }
+            this.getAllBooks(data)
+        }
     },
     mounted(){
-        this.getAllBooks()
+        const data = {
+            book: this.search ? this.search : ""
+        }
+        this.getAllBooks(data)
     }
 }
 </script>

@@ -42,13 +42,32 @@
                             No user has been registered yet, please check back !
                         </div>
                         <template v-else>
-                            <v-data-table
-                                :headers="headers"
-                                :items="allUsers"
-                                :items-per-page="10"
-                                class="elevation-0"
-                            >
-                            </v-data-table>
+                         <v-simple-table>
+                                <template v-slot:default>
+                                <thead>
+                                    <tr>
+                                    <th class="text-left">
+                                        <div class="text-subtitle-1 text-left font-weight-medium grey--text mb-2">All  <span class="primary--text">Users</span></div>
+                                    </th>
+                                    <th class="text-center">
+                                        Date of Registration
+                                    </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr
+                                        v-for="item in allUsers"
+                                        :key="item.id"
+                                        class="grey--text"
+                                    >
+                                        <td>
+                                            {{ item.firstName }}
+                                        </td>
+                                        <td class="text-center">{{ item.createdAt }}</td>
+                                    </tr>
+                                </tbody>
+                                </template>
+                            </v-simple-table>
                         </template>
                     </v-col>
                 </v-row>
@@ -63,10 +82,6 @@ export default {
     data(){
         return {
             search: null,
-            headers: [
-            { text: 'All Users', value: 'firstName' },
-            { text: 'Date of Registration', value: 'updatedAt', align: 'right' },
-            ],
         }
     },
     computed: {

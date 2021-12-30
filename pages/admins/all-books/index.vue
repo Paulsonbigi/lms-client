@@ -48,25 +48,52 @@
                             No book matches your search input!
                         </div>
                         <div v-else>
-                            <template >
-                             <v-data-table
-                                :headers="headers"
-                                :items="allBooks"
-                                :items-per-page="5"
-                                class="elevation-0"
-                                >
-                                
-                                    <template v-slot:item.actions="{ item }">
-                                        <v-icon
-                                            small
-                                            class="mr-2"
-                                            @click="editItem(item)"
+                            <v-simple-table>
+                                <template v-slot:default>
+                                    <thead>
+                                        <tr>
+                                        <th class="text-left">
+                                            <div class="text-subtitle-1 text-left font-weight-medium grey--text mb-2">Book  <span class="primary--text">Title</span></div>
+                                        </th>
+                                        <th class="text-center">
+                                            Edit
+                                        </th>
+                                        <th class="text-center">
+                                            Available Copies
+                                        </th>
+                                        <th class="text-center">
+                                            Borrowed Copies
+                                        </th>
+                                        <th class="text-right">
+                                            Total
+                                        </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr
+                                            v-for="item in allBooks"
+                                            :key="item._id"
+                                            class="grey--text"
                                         >
-                                            mdi-pencil
-                                        </v-icon>
-                                        </template>
-                                </v-data-table>
-                            </template>
+                                            <td>
+                                                {{ item.bookTitle }}
+                                            </td>
+                                            <td class="text-center">
+                                                <v-icon
+                                                    small
+                                                    class="mr-2"
+                                                    @click="editItem(item)"
+                                                >
+                                                    mdi-pencil
+                                                </v-icon>
+                                            </td>
+                                            <td class="text-center">{{ item.availableCopies }}</td>
+                                            <td class="text-center">{{ item.borrowedCopies }}</td>
+                                            <td class="text-right">{{ item.noOfCopies }}</td>
+                                        </tr>
+                                    </tbody>
+                                </template>
+                            </v-simple-table>
                         </div>
                     </v-col>
                 </v-row>
