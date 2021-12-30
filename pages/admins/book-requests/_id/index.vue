@@ -7,31 +7,33 @@
                     <v-row>
                         <v-col cols="12" md="4" class="pa-0">
                             <div class="d-flex items-center">
-                                <v-text-field
-                                    v-model="search"
-                                    placeholder="Search User"
-                                    append-icon="mdi-magnify"
-                                    dense
-                                    outlined
-                                    block
-                                    height="40"
-                                    :required="true"
-                                    class="ma-0 p-0 mb-3"
-                                />
-                                <v-btn
-                                    class="ml-1"
-                                    depressed
-                                    height="40"
-                                    width="40"
-                                    :loading="loading"
-                                    :disabled="loading"
-                                    color="primary"
-                                    @click="loader = 'loading'"
-                                    >
-                                    <v-icon>
-                                        mdi-filter
-                                    </v-icon>
-                                </v-btn>
+                                <v-form class="d-flex items-center">
+                                    <v-text-field
+                                        v-model="search"
+                                        placeholder="Search User"
+                                        append-icon="mdi-magnify"
+                                        dense
+                                        outlined
+                                        block
+                                        height="40"
+                                        :required="true"
+                                        class="ma-0 p-0 mb-3"
+                                    />
+                                    <v-btn
+                                        class="ml-1"
+                                        depressed
+                                        height="40"
+                                        width="40"
+                                        :loading="loading"
+                                        :disabled="loading"
+                                        color="primary"
+                                        @click="searchUser"
+                                        >
+                                        <v-icon>
+                                            mdi-filter
+                                        </v-icon>
+                                    </v-btn>
+                                </v-form>
                             </div>
                         </v-col>
                         <div>
@@ -43,7 +45,7 @@
                 </div>
                 <v-row>
                     <v-col  cols="12" class="pa-0">
-                        <div class="text-subtitle-1 d-flex justify-center mx-auto text-center font-weight-normal grey--text mb-2" v-if="allSameBooks.length < 1">
+                        <div class="text-subtitle-1 d-flex justify-center mx-auto mt-8 text-center font-weight-normal grey--text mb-2" v-if="allSameBooks.length < 1">
                             No pending request requests for {{singleBook.bookTitle}}
                         </div>
                         <template v-else>
@@ -174,12 +176,30 @@ export default {
                 } catch(err){
 
                 }
+            },
+
+            async searchUser(e) {
+                try{
+                    e.preventDefault();
+                    
+                    const data = {
+                        requestId: this.$route.params.id,
+                        username: this.search ? this.search : ""
+                    }
+                    this.getSameBookRequestsPending(data)
+                } catch (err){
+
+                }
             }
     },
     mounted(){
         this.bookRequestsId = this.$route.params.id
         this.getSingleBook(this.bookRequestsId)
-        this.getSameBookRequestsPending(this.$route.params.id)
+        const data = {
+            requestId: this.$route.params.id,
+            username: this.search ? this.search : ""
+        }
+        this.getSameBookRequestsPending(data)
     }
   
 }

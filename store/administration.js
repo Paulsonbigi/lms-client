@@ -77,9 +77,9 @@ export const actions = {
     commit("SET_LOADING", false);
   },
 
-  async getAllUsers({ commit },) {
+  async getAllUsers({ commit }, userSearchText) {
     commit("SET_LOADING", true);
-    const { data }  = await this.$axios.$get("/user/get-users-only")
+    const { data }  = await this.$axios.$get("/user/get-users-only?userSearchText=" + userSearchText)
     commit('SET_ALL_USERS', data)
     commit("SET_LOADING", false)
   },
@@ -105,16 +105,18 @@ export const actions = {
     commit("SET_LOADING", false)
   },
 
-  async getSameBookRequestsPending({ commit }, requestId) {
+  async getSameBookRequestsPending({ commit }, dataP) {
+    console.log(dataP)
+    let requestId = dataP.requestId
     commit("SET_LOADING", true);
-    const { data }  = await this.$axios.$get("/borrow/all-requests-same-title/"+requestId)
+    const { data }  = await this.$axios.$get("/borrow/all-requests-same-title/"+ requestId + "?username=" + dataP.username )
     commit('SET_SAME_BOOKS_BY_TITLE', data)
     commit("SET_LOADING", false)
   },
 
-  async getSameBookRequestsApproved({ commit }, requestId) {
+  async getSameBookRequestsApproved({ commit }, dataP) {
     commit("SET_LOADING", true);
-    const { data }  = await this.$axios.$get("/borrow/all-approved-requests-same-title/"+requestId)
+    const { data }  = await this.$axios.$get("/borrow/all-approved-requests-same-title/"+dataP.requestId + "?username=" + dataP.username )
     commit('SET_SAME_APPROVED_BOOKS_BY_TITLE', data)
     commit("SET_LOADING", false)
   },

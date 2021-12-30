@@ -6,31 +6,33 @@
                     <v-row>
                         <v-col cols="12" md="4">
                             <div class="d-flex items-center">
-                                <v-text-field
-                                    v-model="search"
-                                    placeholder="Search book"
-                                    append-icon="mdi-magnify"
-                                    dense
-                                    outlined
-                                    block
-                                    height="40"
-                                    :required="true"
-                                    class="ma-0 p-0 mb-3"
-                                />
-                                <v-btn
-                                    class="ml-1"
-                                    depressed
-                                    height="40"
-                                    width="40"
-                                    :loading="loading"
-                                    :disabled="loading"
-                                    color="primary"
-                                    @click="loader = 'loading'"
-                                    >
-                                    <v-icon>
-                                        mdi-filter
-                                    </v-icon>
-                                </v-btn>
+                                <v-form class="d-flex items-center">
+                                    <v-text-field
+                                        v-model="search"
+                                        placeholder="Search book"
+                                        append-icon="mdi-magnify"
+                                        dense
+                                        outlined
+                                        block
+                                        height="40"
+                                        :required="true"
+                                        class="ma-0 p-0 mb-3"
+                                    />
+                                    <v-btn
+                                        class="ml-1"
+                                        depressed
+                                        height="40"
+                                        width="40"
+                                        :loading="loading"
+                                        :disabled="loading"
+                                        color="primary"
+                                        @click="searchResult"
+                                        >
+                                        <v-icon>
+                                            mdi-filter
+                                        </v-icon>
+                                    </v-btn>
+                                </v-form>
                             </div>
                         </v-col>
                         <div>
@@ -40,10 +42,10 @@
 
                 <v-row>
                     <v-col  cols="12" >
-                        <div class="text-subtitle-1 text-left font-weight-normal grey--text mb-2" v-if="allBooks.length < 1">
+                        <div class="text-subtitle-1 text-center d-flex mx-auto mt-8 font-weight-normal grey--text mb-2" v-if="allBooks.length < 1">
                             No book request yet, please check back !
                         </div>
-                        <div else>
+                        <div v-else>
                             <template >
                                 <v-simple-table>
                                     <template v-slot:default>
@@ -103,11 +105,21 @@ export default {
             'getAllPendingRequests': 'administration/getAllPendingRequests',
             'getAllBooks': 'transactions/getAllBooks',
             'getAllApprovedRequests': 'administration/getAllApprovedRequests',
-        })
+        }),
+
+        searchResult(){
+            const data = {
+                book: this.search ? this.search : ""
+            }
+            this.getAllBooks(data)
+        }
     },
     mounted(){
         this.getAllBookRequests()
-        this.getAllBooks()
+        const data = {
+            book: this.search ? this.search : ""
+        }
+        this.getAllBooks(data)
         this.getAllApprovedRequests()
     }
 }

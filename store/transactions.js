@@ -64,9 +64,10 @@ export const actions = {
     },
 
     async getAllBooks({ commit }, registerData) {
+      console.log("okkkkk", registerData)
         commit("SET_LOADING", true);
-        const { data } = await this.$axios.$get(`/book/get-books`, );
-        // const { data } = await this.$axios.$get(`/book/get-books?page=${1}&limit=${5}`, );
+        // const { data } = await this.$axios.$get(`/book/get-books`, );
+        const { data } = await this.$axios.$get(`/book/search?book=`+ registerData.book);
         commit('SET_ALL_BOOKS', data);
         commit("SET_LOADING", false);
     },

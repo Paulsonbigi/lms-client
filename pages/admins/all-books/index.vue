@@ -44,13 +44,14 @@
                 </div>
                 <v-row>
                     <v-col  cols="12" >
-                        <div class="text-subtitle-1 text-left font-weight-normal grey--text mb-2" v-if="!allBooks">
-                            No book has been added yet, please check back !
+                        <div class="text-subtitle-1 text-center font-weight-normal mt-8 grey--text mb-2" v-if="allBooks.length< 1">
+                            No book matches your search input!
                         </div>
-                        <template else>
+                        <div v-else>
+                            <template >
                              <v-data-table
                                 :headers="headers"
-                                :items="books"
+                                :items="allBooks"
                                 :items-per-page="5"
                                 class="elevation-0"
                                 >
@@ -66,6 +67,7 @@
                                         </template>
                                 </v-data-table>
                             </template>
+                        </div>
                     </v-col>
                 </v-row>
         </v-item-group>
@@ -102,28 +104,35 @@ export default {
         ...mapGetters({
             'allBooks': 'transactions/allBooks'
         }),
-        books: function(){
-            if(this.search) {
-                return this.searchResult()
-            }
-            return this.allBooks
-        }
+        // books: function() {
+        //     if(this.search){
+        //         return this.searchResult()
+        //     }
+        //     const data = {
+        //         book: this.search ? this.search : ""
+        //     }
+        //     this.getAllBooks(data)
+        // }
     },
     methods: {
         ...mapActions({
             'getAllBooks': 'transactions/getAllBooks',
-            'getAllBooksSearch': 'transactions/getAllBooksSearch',
         }),
         editItem(val){
             this.$router.push(`/admins/all-books/edit/${val._id}`)
         },
         searchResult(){
-            this.getAllBooksSearch(this.search)
+            const data = {
+                book: this.search ? this.search : ""
+            }
+            this.getAllBooks(data)
         }
     },
     mounted(){
-        this.getAllBooks()
-        this.getAllBooksSearch(this.search)
+        const data = {
+            book: this.search ? this.search : ""
+        }
+        this.getAllBooks(data)
     }
 }
 </script>

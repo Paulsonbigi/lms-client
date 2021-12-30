@@ -73,7 +73,7 @@ export default {
         
         try{
                 const data = {
-                    token: this.resetPin
+                    token: this.resetPin ? this.resetPin : "" 
                 }
                 await this.passwordResetRequestToken(data)
               
