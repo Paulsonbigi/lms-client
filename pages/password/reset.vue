@@ -19,7 +19,6 @@
                                 separator="-"
                                 :shouldAutoFocus="true"
                                 @on-complete="handleOnComplete"
-                                @on-change="handleOnChange"
                             />
                         </div>
 
@@ -65,9 +64,6 @@ export default {
 
     handleOnComplete(value) {
       this.resetPin = value
-    },
-    handleOnChange(value) {
-
     },
     async signIn() {
         
