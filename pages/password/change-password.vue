@@ -105,14 +105,13 @@ export default {
                 await this.resetPassword(data);
                 this.show1 = true;
                 localStorage.removeItem("reset_email");
-                this.$router.push("/login");
         } catch(e){
             
         }
       },
 
       pushToSignIn(){
-          this.$router.push("/push")
+          this.$router.push("/login")
       }
     },
     mounted() {
