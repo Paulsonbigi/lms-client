@@ -269,12 +269,6 @@ export default {
                 }
                 const data = {bookId: this.bookId, dataM}
                 await this.editBook(data)
-                await this.$notify({
-                    group: 'auth',
-                    text: `Book updated successfully`,
-                    max: "1",
-                    duration: 1500,
-                })
                 this.$router.push("/admins/all-books/")
             } catch(err){
 

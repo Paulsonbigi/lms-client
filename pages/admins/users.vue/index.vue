@@ -61,7 +61,7 @@
                                         class="grey--text"
                                     >
                                         <td>
-                                            {{ item.firstName }}
+                                            {{ item.username }}
                                         </td>
                                         <td class="text-center">{{ item.createdAt }}</td>
                                     </tr>

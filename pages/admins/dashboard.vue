@@ -33,7 +33,7 @@ export default {
     components: {},
     data(){
         return {
-
+            search: null
         }
     },
     computed: {
@@ -49,7 +49,7 @@ export default {
         })
     },
     mounted(){
-        this.getAllUsers()
+        this.getAllUsers(this.search ? this.search : "")
         this.getAllApprovedRequests()
     }
 }
