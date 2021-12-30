@@ -77,7 +77,7 @@ export default {
                 }
                 await this.passwordResetRequestToken(data)
               
-              this.$router.push({path: "change-password"})
+              this.$router.push("/password/change-password")
         } catch(e){
             
         }

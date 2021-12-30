@@ -76,7 +76,7 @@ export default {
 
             localStorage.setItem("reset_email", this.registeredEmail)
             
-            this.$router.push({path: "reset"})
+            this.$router.push("/password/reset")
             
             this.$notify({
                 group: 'auth',

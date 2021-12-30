@@ -88,8 +88,8 @@ export default {
                     email: this.email
                 }
                 await this.resetPassword(data)
-                localStorage.remove("reset_email")
-            this.$router.push("login")
+                localStorage.removeItem("reset_email")
+                this.$router.push("/login")
         } catch(e){
             
         }
