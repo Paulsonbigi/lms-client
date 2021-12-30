@@ -50,6 +50,21 @@
                 </v-col>
             </v-row>
         </v-card>
+        <v-dialog
+            v-model="show1"
+            max-width="600"
+            min-height="500"
+        >
+        <v-card class=" d-flex justify-center flex-column">
+            <img src="/svg/success.svg" class="d-flex justify-center mx-auto mt-16 mb-2" width="20%" alt="Login image"/>
+
+            <v-card-text class="text-center pb-16 text-h6">
+                Password reset was successful!!!
+
+                <v-btn @click="pushToSignIn()" color="primary" block class="px-12 w-full mt-10 bg-primary ">Login</v-btn>
+            </v-card-text>
+            </v-card>
+        </v-dialog>
   </v-app>
 </template>
 
@@ -87,12 +102,17 @@ export default {
                     password: this.reset.password,
                     email: this.email
                 }
-                await this.resetPassword(data)
-                localStorage.removeItem("reset_email")
-                this.$router.push("/login")
+                await this.resetPassword(data);
+                this.show1 = true;
+                localStorage.removeItem("reset_email");
+                this.$router.push("/login");
         } catch(e){
             
         }
+      },
+
+      pushToSignIn(){
+          this.$router.push("/push")
       }
     },
     mounted() {
