@@ -66,7 +66,7 @@
                                         v-for="item in sameApprovedBooks"
                                         :key="item._id"
                                         >
-                                        <td v-if="item.user">{{ item.username }}</td>
+                                        <td >{{ item.username }}</td>
                                         <td class="text-right d-flex ml-auto my-auto" v-if="item">                                        
                                             <v-checkbox v-model="selected" color="primary" class="d-flex justify-content-end ml-auto align-right" :value="item._id" :multiple="true"></v-checkbox>
                                         </td>

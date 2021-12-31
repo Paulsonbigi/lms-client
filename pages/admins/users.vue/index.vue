@@ -38,8 +38,8 @@
                     </v-row>
                 <v-row>
                     <v-col  cols="12" >
-                        <div class="text-subtitle-1 text-left font-weight-normal grey--text mb-2" v-if="!allUsers">
-                            No user has been registered yet, please check back !
+                        <div class="text-subtitle-1 text-left font-weight-normal grey--text mb-2" v-if="allUsers.length < 1">
+                            User has been registered yet, please check back !
                         </div>
                         <template v-else>
                          <v-simple-table>
