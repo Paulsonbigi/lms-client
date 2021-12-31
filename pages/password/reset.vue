@@ -13,12 +13,22 @@
                             <h2 class="accent--text">Password <span class="primary--text">Reset Pin</span></h2>
                         </div>
                         <div class="mb-3 d-flex d-flex justify-center">
-                            <v-otp-input
+                            <!--<v-otp-input
                                 inputClasses="otp-input"
                                 :numInputs="6"
                                 separator="-"
                                 :shouldAutoFocus="true"
                                 @on-complete="handleOnComplete"
+                            /> -->
+                            <v-text-field
+                                v-model="resetPin"
+                                placeholder="Reset token"
+                                label="Enter your email"
+                                dense
+                                outlined
+                                :required="true"
+                                block
+                                class="ma-0 p-0"
                             />
                         </div>
 
@@ -50,7 +60,7 @@ export default {
     valid: false,
     show1: false,
     registeredEmail: null,
-    resetPin: null
+    resetPin: ""
   }),
   computed: {
     rule() {
@@ -69,7 +79,7 @@ export default {
         
         try{
                 const data = {
-                    token: this.resetPin ? this.resetPin : "" 
+                    token: this.resetPin 
                 }
                 await this.passwordResetRequestToken(data)
               
