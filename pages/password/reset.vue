@@ -23,7 +23,7 @@
                             <v-text-field
                                 v-model="resetPin"
                                 placeholder="Reset token"
-                                label="Enter your email"
+                                label="Enter the reset token"
                                 dense
                                 outlined
                                 :required="true"
