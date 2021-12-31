@@ -160,7 +160,6 @@ export default {
 
             async confirmApproval(){
                 try{
-                    console.log("they are", this.selected)
                     const data = {
                         requestIds: this.selected,
                         bookId: this.bookRequestsId

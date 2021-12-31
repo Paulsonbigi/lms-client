@@ -93,6 +93,7 @@
                         required
                         dense
                         outlined
+                        disabled
                         block
                         :required="true"
                         class="ma-0 p-0 mb-3"

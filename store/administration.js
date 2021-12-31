@@ -71,7 +71,6 @@ export const actions = {
   },
 
   async updateRequests({ commit }, requestData) {
-    console.log("from store", requestData.bookId)
     commit("SET_LOADING", true);
     await this.$axios.$patch("/admin/updates-record/"+ requestData.requestIds + "/" + requestData.bookId);
     commit("SET_LOADING", false);
@@ -106,7 +105,6 @@ export const actions = {
   },
 
   async getSameBookRequestsPending({ commit }, dataP) {
-    console.log(dataP)
     let requestId = dataP.requestId
     commit("SET_LOADING", true);
     const { data }  = await this.$axios.$get("/borrow/all-requests-same-title/"+ requestId + "?username=" + dataP.username )
