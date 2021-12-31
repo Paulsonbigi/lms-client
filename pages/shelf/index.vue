@@ -42,24 +42,41 @@
                 <v-row>
                     <v-col  cols="12" >
                         <template>
-                             <v-data-table
-                                :headers="headers"
-                                :items="myApprovedBooks"
-                                :items-per-page="5"
-                                class="elevation-0"
-                                >
-                                
-                                    <template v-slot:item.actions="{ item }">
-                                        <v-icon
-                                            small
-                                            class="mr-2"
-                                            @click="editItem(item)"
+                            <v-simple-table>
+                                <template v-slot:default>
+                                    <thead>
+                                        <tr>
+                                        <th class="text-left">
+                                            <div class="text-subtitle-1 text-left font-weight-medium grey--text mb-2">Book  <span class="primary--text">Title</span></div>
+                                        </th>
+                                        <th class="text-center">
+                                        Author
+                                        </th>
+                                        <th class="text-center">
+                                        My request ID
+                                        </th>
+                                        <th class="text-center">
+                                        Return Date
+                                        </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr
+                                            v-for="item in myApprovedBooks"
+                                            :key="item.id"
+                                            class="grey--text"
                                         >
-                                            mdi-pencil
-                                        </v-icon>
-                                        </template>
-                                </v-data-table>
-                            </template>
+                                            <td>
+                                                {{ item.appliedBooks.bookTitle }}
+                                            </td>
+                                            <td class="text-center">{{ item.appliedBooks.authorName }}</td>
+                                            <td class="text-center">{{ item.appliedBooks._id }}</td>
+                                            <td class="text-right">{{ item.appliedBooks._id }}</td>
+                                        </tr>
+                                    </tbody>
+                                </template>
+                            </v-simple-table>
+                        </template>
                     </v-col>
                 </v-row>
         </v-item-group>
@@ -84,7 +101,7 @@ export default {
             },
             { text: 'Author', value: 'appliedBooks.authorName' },
             { text: 'My request ID', value: 'appliedBooks._id' },
-            { text: 'Return Date', value: 'returnDate' },
+            { text: 'Return Date', value: 'appliedBooks._id' },
             ],
         }
     },
@@ -105,13 +122,12 @@ export default {
     methods: {
         ...mapActions({
             'getMyApprovedBooks': 'transactions/getMyApprovedBooks',
-            'getAllBooksSearch': 'transactions/getAllBooksSearch',
         }),
         editItem(val){
             this.$router.push(`/admins/all-books/edit/${val._id}`)
         },
         searchResult(){
-            this.getAllBooksSearch(this.search)
+
         }
     },
     mounted(){
