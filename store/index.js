@@ -38,7 +38,7 @@ export const actions = {
 
   async passwordResetRequestToken({ commit }, data) {
     commit("SET_REGISTERING", true);
-    await this.$axios.$patch(`/user/reset-password/${data.token}`)
+    await this.$axios.$patch(`/user/reset-password`, data)
     commit("SET_REGISTERING", true);
   },
 

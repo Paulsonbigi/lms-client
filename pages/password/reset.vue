@@ -80,6 +80,9 @@ export default {
       }
     },
     mounted() {
+      if(!localStorage.getItem("reset_email")){
+        this.$router.push("/password/email")
+      }
     },
 }
 </script>
