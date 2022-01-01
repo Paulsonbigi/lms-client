@@ -63,7 +63,7 @@
                                         <td>
                                             {{ item.username }}
                                         </td>
-                                        <td class="text-center">{{ item.createdAt }}</td>
+                                        <td class="text-center">{{item.createdAt}}</td>
                                     </tr>
                                 </tbody>
                                 </template>
