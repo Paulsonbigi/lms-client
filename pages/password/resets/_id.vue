@@ -10,7 +10,7 @@
                      <v-form ref="form" v-model="valid" lazy-validation v-on:keyup.native.enter="signIn"
                     >
                         <div class="mb-10">
-                            <h2 class="accent--text">Password <span class="primary--text">Reset Pin</span></h2>
+                            <h2 class="accent--text">Password <span class="primary--text">Reset Pins</span></h2>
                         </div>
                         <div class="ma-auto mb-3 position-relative">
                             <v-otp-input
@@ -78,9 +78,12 @@ export default {
       }
     },
     mounted() {
+      // console.log("Hello guys")
+
       if(!localStorage.getItem("reset_email")){
         this.$router.push("/password/email")
       }
+      this.resetPin  = this.$route.params.id
     },
 }
 </script>
