@@ -131,15 +131,12 @@ export default {
         ...mapGetters({
             'allBooks': 'transactions/allBooks'
         }),
-        // books: function() {
-        //     if(this.search){
-        //         return this.searchResult()
-        //     }
-        //     const data = {
-        //         book: this.search ? this.search : ""
-        //     }
-        //     this.getAllBooks(data)
-        // }
+        searchResult(){
+            const data = {
+                book: this.search ? this.search : ""
+            }
+            this.getAllBooks(data)
+        }
     },
     methods: {
         ...mapActions({
@@ -148,12 +145,6 @@ export default {
         editItem(val){
             this.$router.push(`/admins/all-books/edit/${val._id}`)
         },
-        searchResult(){
-            const data = {
-                book: this.search ? this.search : ""
-            }
-            this.getAllBooks(data)
-        }
     },
     mounted(){
         const data = {

@@ -97,14 +97,6 @@ export default {
             'bookRequests': 'administration/bookRequests',
             'allBooks': 'transactions/allBooks',
             'pendingRequests': 'administration/pendingRequests'
-        })
-    },
-    methods:{
-        ...mapActions({
-            'getAllBookRequests': 'administration/getAllBookRequests',
-            'getAllPendingRequests': 'administration/getAllPendingRequests',
-            'getAllBooks': 'transactions/getAllBooks',
-            'getAllApprovedRequests': 'administration/getAllApprovedRequests',
         }),
 
         searchResult(){
@@ -113,6 +105,14 @@ export default {
             }
             this.getAllBooks(data)
         }
+    },
+    methods:{
+        ...mapActions({
+            'getAllBookRequests': 'administration/getAllBookRequests',
+            'getAllPendingRequests': 'administration/getAllPendingRequests',
+            'getAllBooks': 'transactions/getAllBooks',
+            'getAllApprovedRequests': 'administration/getAllApprovedRequests',
+        }),
     },
     mounted(){
         this.getAllBookRequests()

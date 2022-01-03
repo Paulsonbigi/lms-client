@@ -61,18 +61,19 @@ export default {
     computed: {
         ...mapGetters({
             'allBooks': 'transactions/allBooks'
-        })
-    }, 
-    methods: {
-        ...mapActions({
-            'getAllBooks': 'transactions/getAllBooks'
         }),
+        
         searchResult(){
             const data = {
                 book: this.search ? this.search : ""
             }
             this.getAllBooks(data)
         }
+    }, 
+    methods: {
+        ...mapActions({
+            'getAllBooks': 'transactions/getAllBooks'
+        }),
     },
     mounted(){
         const data = {

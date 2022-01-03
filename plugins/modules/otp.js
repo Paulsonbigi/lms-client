@@ -1,4 +1,4 @@
-// import Vue from 'vue'
-// import OtpInput from "@bachdgvn/vue-otp-input";
+import Vue from 'vue'
+import Pusher from 'pusher-js'
 
-// Vue.component("v-otp-input", OtpInput);
+Vue.use(Pusher)

@@ -88,18 +88,19 @@ export default {
         ...mapGetters({
             'allUsers': 'administration/allUsers',
             'loading': 'administration/loading'
-        })
+        }),
+        
+        async searchAUser(e){
+            e.preventDefault();
+            
+            await this.getAllUsers(this.search ? this.search : "")
+        }
     },
     methods: {
         ...mapActions({
             'getAllUsers': 'administration/getAllUsers'
         }),
 
-        async searchAUser(e){
-            e.preventDefault();
-            
-            await this.getAllUsers(this.search ? this.search : "")
-        }
     },
     mounted(){
         this.getAllUsers(this.search ? this.search : "")
