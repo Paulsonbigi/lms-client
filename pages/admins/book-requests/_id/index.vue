@@ -127,20 +127,6 @@ export default {
                 'allSameBooks': 'administration/allSameBooks',
                 'singleBook': 'transactions/singleBook'
             }), 
-            
-            async searchUser(e) {
-                try{
-                    e.preventDefault();
-                    
-                    const data = {
-                        requestId: this.$route.params.id,
-                        username: this.search ? this.search : ""
-                    }
-                    this.getSameBookRequestsPending(data)
-                } catch (err){
-
-                }
-            }
         },
     methods:{
         ...mapMutations({
@@ -190,6 +176,20 @@ export default {
 
                 }
             },
+            
+            async searchUser(e) {
+                try{
+                    e.preventDefault();
+                    
+                    const data = {
+                        requestId: this.$route.params.id,
+                        username: this.search ? this.search : ""
+                    }
+                    this.getSameBookRequestsPending(data)
+                } catch (err){
+
+                }
+            }
 
     },
     mounted(){

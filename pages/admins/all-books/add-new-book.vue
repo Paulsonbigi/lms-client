@@ -168,9 +168,6 @@ export default {
             'loading': 'administration/loading'
         })
     },
-    created () {
-        this.subscribe()
-    },
     methods:{
         ...mapActions({
             'createNewBook': 'administration/createNewBook'
@@ -198,14 +195,6 @@ export default {
 
             }
         },
-
-        subscribe () {
-            let pusher = new Pusher(process.env.PUSHER_APP_KEY, { cluster: process.env.PUSHER_APP_CLUSTER })
-            pusher.subscribe('reviews')
-            pusher.bind('review_added', data => {
-                this.mockReviews.unshift(data.review)
-            })
-        }
     }
 }
 </script>

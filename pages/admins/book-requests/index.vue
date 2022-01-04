@@ -96,13 +96,6 @@ export default {
             'allBooks': 'transactions/allBooks',
             'pendingRequests': 'administration/pendingRequests'
         }),
-
-        searchResult(){
-            const data = {
-                book: this.search ? this.search : ""
-            }
-            this.getAllBooks(data)
-        }
     },
     methods:{
         ...mapActions({
@@ -110,6 +103,13 @@ export default {
             'getAllPendingRequests': 'administration/getAllPendingRequests',
             'getAllBooks': 'transactions/getAllBooks',
         }),
+
+        searchResult(){
+            const data = {
+                book: this.search ? this.search : ""
+            }
+            this.getAllBooks(data)
+        }
     },
 
     mounted(){

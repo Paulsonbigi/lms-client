@@ -81,6 +81,7 @@ export default {
     components: {},
     data(){
         return {
+            searchD: null,
             search: null,
         }
     },
@@ -89,18 +90,15 @@ export default {
             'allUsers': 'administration/allUsers',
             'loading': 'administration/loading'
         }),
-        
-        async searchAUser(e){
-            e.preventDefault();
-            
-            await this.getAllUsers(this.search ? this.search : "")
-        }
     },
     methods: {
         ...mapActions({
             'getAllUsers': 'administration/getAllUsers'
         }),
 
+        async searchAUser(e){            
+            await this.getAllUsers(this.search ? this.search : "")
+        }
     },
     mounted(){
         this.getAllUsers(this.search ? this.search : "")
