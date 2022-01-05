@@ -46,7 +46,7 @@
                 <v-row>
                     <v-col  cols="12" class="pa-0">
                         <div class="text-subtitle-1 d-flex justify-center mx-auto mt-8 text-center font-weight-normal grey--text mb-2" v-if="allSameBooks.length < 1">
-                            No pending request requests for {{singleBook.bookTitle}}
+                            No pending request for {{singleBook.bookTitle}}
                         </div>
                         <template v-else>
                             <v-simple-table>
