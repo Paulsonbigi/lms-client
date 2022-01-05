@@ -67,7 +67,7 @@
                                         <td>
                                             <nuxt-link :to="'/admins/book-requests/' + item._id" class="grey--text" >{{ item.bookTitle }}</nuxt-link>
                                         </td>
-                                        <td class="text-center" v-if="item.requestUsers">{{ item.requestUsers.length }}</td>
+                                        <td class="text-center" v-if="item.requestUsers">{{ item.borrowedCopies - item.numberOfRequest }}</td>
                                     </tr>
                                 </tbody>
                                 </template>
