@@ -89,7 +89,7 @@
                 </v-card-title>
 
                 <v-card-text class="text-center">
-                    Are you sure you want lend {{singleBook.bookTitle}} to the {{selected.length}} {{selected.length < 2 ? "user" : "users"}} selected?
+                    Are you sure you want lend {{singleBook.bookTitle}} to this user selected?
                 </v-card-text>
 
                 <v-card-actions>
@@ -108,7 +108,7 @@ export default {
     data(){
         return {
             checkbox: {},
-            selected: [],
+            selected: null,
             dialog: false,
             search: null,
             bookTitle: 'Purpose driven life',
@@ -145,7 +145,7 @@ export default {
             },
 
             async approveReq(){
-                if(this.selected.length < 1){
+                if(!this.selected){
                     this.$notify({
                         group: 'auth',
                         text: 'You need to select at least a book to continue.',
@@ -161,7 +161,7 @@ export default {
             async confirmApproval(){
                 try{
                     const data = {
-                        requestIds: this.selected,
+                        requestId: this.selected,
                         bookId: this.bookRequestsId
                     }
                     await this.approveRequests(data)

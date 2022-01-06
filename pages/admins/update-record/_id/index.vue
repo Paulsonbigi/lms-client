@@ -113,7 +113,7 @@ export default {
         bookTitle: 'Purpose driven life',
         checkbox: false,
         approvals: null,
-        selected: [],
+        selected: null,
         headers: [
             { text: 'Users', value: 'user.username' },
             { text: '', value: 'actions', sortable: false, align: 'right' }
@@ -143,7 +143,7 @@ export default {
             },
 
             async approveReq(){
-                if(this.selected.length < 1){
+                if(!this.selected ){
                     this.$notify({
                         group: 'auth',
                         text: 'You need to select at least a book to continue.',
@@ -159,7 +159,7 @@ export default {
             async confirmApproval(){
                 try{
                     const data = {
-                        requestIds: this.selected,
+                        requestId: this.selected,
                         bookId: this.bookRequestsId
                     }
                     await this.updateRequests(data)

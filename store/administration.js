@@ -66,13 +66,13 @@ export const actions = {
 
   async approveRequests({ commit },requestData) {
     commit("SET_LOADING", true);
-    await this.$axios.$patch("/admin/borrow-approve/"+ requestData.requestIds + "/" + requestData.bookId);
+    await this.$axios.$patch("/admin/borrow-approve/"+ requestData.requestId + "/" + requestData.bookId);
     commit("SET_LOADING", false);
   },
 
   async updateRequests({ commit }, requestData) {
     commit("SET_LOADING", true);
-    await this.$axios.$patch("/admin/updates-record/"+ requestData.requestIds + "/" + requestData.bookId);
+    await this.$axios.$patch("/admin/updates-record/"+ requestData.requestId + "/" + requestData.bookId);
     commit("SET_LOADING", false);
   },
 
