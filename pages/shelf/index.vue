@@ -71,7 +71,7 @@
                                             </td>
                                             <td class="text-center">{{ item.appliedBooks.authorName }}</td>
                                             <td class="text-center">{{ item.appliedBooks._id }}</td>
-                                            <td class="text-right">{{ item.appliedBooks._id }}</td>
+                                            <td class="text-right">{{ item.returnDate }}</td>
                                         </tr>
                                     </tbody>
                                 </template>
