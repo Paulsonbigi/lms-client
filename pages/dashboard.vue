@@ -48,7 +48,6 @@ export default {
             duration: 1500,
         })
         this.getMyBorrowedBooks()
-        this.bookChannel
     }
 }
 </script>

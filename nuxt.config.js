@@ -39,7 +39,6 @@ export default {
   plugins: [
     "~/plugins/mixins/validation",
     "~/plugins/mixins/axios",
-    "~/plugins/mixins/echo.js",
     "~/plugins/mixins/user",
     { src: "plugins/modules/notification.js", ssr: false },
     { src: "plugins/modules/otp.js", ssr: false },
