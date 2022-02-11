@@ -1,10 +1,12 @@
-export default function ({ $pusher }) {
-    // Echo is available here
+import Pusher from "pusher-js"
 
-    $pusher.subscribe('new_book_notifications')
-    .listen('new_book', (e) => {
-        console.log("New book created")
-    });
+Pusher.logToConsole = true;
 
-  }
+var pusher = new Pusher(process.env.PUSHER_APP_KEY, {
+  cluster: 'mt1'
+});
 
+var channel = pusher.subscribe('book-notification-channel');
+channel.bind('test_event', function(data) {
+  app.messages.push(JSON.stringify(data));
+});

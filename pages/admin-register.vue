@@ -4,7 +4,7 @@
             <img src="/svg/LMS.svg" width="5%" alt="Login image"/>
         </div>
         <v-card max-width="1000" class="d-flex flex-column mx-auto pb-10  relative bg-tertiary">
-            
+
                     <v-form ref="form" v-model="valid" lazy-validation v-on:keyup.native.enter="signIn" >
                         <v-row class="px-10 py-10">
                             <v-col cols="12" md="6" class="pa-2">
@@ -203,13 +203,13 @@ export default {
                     password: data1.password
                 }
             });
-                
+
             this.show = false
             this.$router.push("/admins/dashboard")
-            
+
         } catch(e){
             console.log(e)
-        }  
+        }
       }
     },
 }

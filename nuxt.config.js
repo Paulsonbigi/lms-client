@@ -39,6 +39,7 @@ export default {
   plugins: [
     "~/plugins/mixins/validation",
     "~/plugins/mixins/axios",
+    "~/plugins/mixins/echo.js",
     "~/plugins/mixins/user",
     { src: "plugins/modules/notification.js", ssr: false },
     { src: "plugins/modules/otp.js", ssr: false },
@@ -52,6 +53,21 @@ export default {
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
   ],
+
+
+  // echo: {
+  //   broadcaster: "pusher",
+  //   plugins: [
+  //     "~/plugins/mixins/echo.js" // create a plugin file and you can find the code in the link above
+  //   ],
+  //   key: process.env.PUSHER_APP_KEY,
+  //   wsHost: process.env.SocketHost, // or your host domain
+  //   wsPort: 443,
+  //   connectOnLogin: true,
+  //   disconnectOnLogout: true,
+  //   authEndpoint: process.env.SockeSocketAuthEndpointtHost,
+  //   authModule: true
+  // },
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
