@@ -115,6 +115,7 @@
                         :required="true"
                         class="ma-0 p-0 mb-3"
                     />
+                    <v-img :src="singleBook.bookCover" position="top center" lazy-src min-width="100%" alt="Login image" contain class=""/>
                 </div>
             </v-col>
         </v-row>

@@ -24,14 +24,14 @@ export default {
     middleware: ['auth', 'isUser'],
     data(){
         return {
-            
+
         }
     },
     computed: {
         ...mapGetters({
             'borrowedBooks': 'transactions/borrowedBooks'
         })
-    }, 
+    },
     methods: {
         ...mapActions({
             'getMyBorrowedBooks': 'transactions/getMyBorrowedBooks'
@@ -48,6 +48,7 @@ export default {
             duration: 1500,
         })
         this.getMyBorrowedBooks()
+        this.bookChannel
     }
 }
 </script>
