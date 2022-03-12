@@ -263,23 +263,47 @@
                 </v-card-actions>
             </v-card>
         </v-dialog>
-            
+
     <v-main>
       <v-container fluid>
         <nuxt/>
         <notifications  position="top center" group="all" :max="1"/>
         <notifications  position="bottom center" group="auth" :max="1"/>
+        <v-snackbar
+          v-model="snackbar"
+          :vertical="vertical"
+        >
+          {{ message }}
+
+          <template v-slot:action="{ attrs }">
+            <v-btn
+              color="indigo"
+              text
+              v-bind="attrs"
+              @click="snackbar = false"
+            >
+              Close
+            </v-btn>
+          </template>
+        </v-snackbar>
       </v-container>
     </v-main>
   </v-app>
 </template>
 <script>
+import Pusher from "pusher-js"
+import ENV from "@/env"
 export default {
   data:() => ({
+    snackbar: false,
+    text: null,
+    message: null,
+    vertical: true,
     drawer: true,
     userPicture: false,
     logo: false,
     dialog: false,
+    messages: [],
     profileItems: [
       {
         title: "User profile",
@@ -335,6 +359,16 @@ export default {
       },
     ],
   }),
+  computed: {
+    checkNotification: {
+      get(){
+        if(this.message) {
+          return true
+      }
+        return false
+      }
+    }
+  },
   methods: {
     logoutUser(){
       this.dialog = true;
@@ -343,6 +377,9 @@ export default {
       this.$auth.logout()
       this.dialog = false;
     }
+
+  },
+  mounted(){
   }
 }
 </script>

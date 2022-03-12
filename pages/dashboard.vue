@@ -2,6 +2,26 @@
     <main>
         <v-item-group active-class="primary">
             <v-container>
+              <template>
+                <div>
+                  <v-alert
+                    v-model="alert"
+                    dismissible
+                    color="cyan"
+                    border="left"
+                    elevation="2"
+                    colored-border
+                    icon="mdi-twitter"
+                  ><nuxt-link :to="url">
+                    {{message}}
+                    </nuxt-link>
+                  </v-alert>
+
+                  <div class="text-center">
+
+                  </div>
+                </div>
+              </template>
                 <v-row>
                     <v-col  cols="12" md="4" >
                         <v-item >
@@ -19,12 +39,16 @@
     </main>
 </template>
 <script>
+import Pusher from "pusher-js"
 import { mapGetters, mapActions } from "vuex"
+import ENV from "@/env"
 export default {
     middleware: ['auth', 'isUser'],
     data(){
         return {
-
+          message: null,
+          url: "/",
+          alert: false
         }
     },
     computed: {
@@ -47,7 +71,18 @@ export default {
             max: "1",
             duration: 1500,
         })
-        this.getMyBorrowedBooks()
+        this.getMyBorrowedBooks();
+
+      const pusher = new Pusher(ENV.pusherKey, {
+        cluster: 'mt1'
+      });
+
+      const channel = pusher.subscribe('book-notification-channel');
+      channel.bind('test_event', function(data) {
+        this.alert = true
+        this.message = data.message;
+        this.url = data.redirectUrl;
+      });
     }
 }
 </script>

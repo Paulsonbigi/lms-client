@@ -14,3 +14,5 @@
 //   )
 //   app.messages.push(JSON.stringify(data));
 // });
+
+// Vue.use(bookChannel, "bookChannel")

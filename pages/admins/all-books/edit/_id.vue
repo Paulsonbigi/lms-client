@@ -115,12 +115,12 @@
                         :required="true"
                         class="ma-0 p-0 mb-3"
                     />
-                    <v-img :src="singleBook.bookCover" position="top center" lazy-src min-width="100%" alt="Login image" contain class=""/>
+                    <v-img :src="singleBook.bookCover" position="top center" lazy-src width="100%" max-height="300" alt="Login image" contain class=""/>
                 </div>
             </v-col>
         </v-row>
         <v-row>
-            <v-col cols="12" md="4" class="pa-0">
+            <v-col cols="12" md="4" class="pa-0 mt-2">
                 <v-btn  color="primary" block class="px-12 bg-primary" @click="editExitedBook()">{{ loading ? 'Book editing...' : 'Edit Book'}}</v-btn>
             </v-col>
         </v-row>
@@ -280,6 +280,7 @@ export default {
     mounted(){
         this.bookId = this.$route.params.id
         this.getSingleBook(this.bookId)
+        
     }
 }
 </script>
